@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Forms() {
+export default function Nav() {
     return (
         <div>
-            This is the forms container
+
         </div>
     )
 }
