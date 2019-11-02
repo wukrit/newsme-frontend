@@ -1,11 +1,11 @@
 import React from 'react'
+import CssBaseLine from '@material-ui/core/CssBaseline'
 import { BrowserRouter as Switch, Route } from 'react-router-dom'
-import Nav from './Components/Nav'
 import { Forms, Newsfeed, Splash } from './Containers'
 
 const App = () => {
-  return <div class='main-container'>
-    <Nav />
+  return <>
+    <CssBaseLine />
 
     <Switch>
       <Route exact path="/">
@@ -19,7 +19,7 @@ const App = () => {
       </Route>
     </Switch>
 
-  </div>
+  </>
 }
 
 export default App
