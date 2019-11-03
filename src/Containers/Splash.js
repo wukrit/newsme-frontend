@@ -1,20 +1,11 @@
 import React from 'react'
-import { BrowserRouter as Link } from 'react-router-dom'
+import { HeroNav } from '../Components'
 
-export default function Splash() {
+function Splash() {
   return (
     <>
       <section className='hero is-link is-fullheight-with-navbar'>
-        <div className='hero-head'>
-          <nav className='navbar'>
-            <div className='container'>
-              <div className='navbar-brand'>
-                <span className='title'>NewsMe</span>
-              </div>
-            </div>
-          </nav>
-        </div>
-
+        <HeroNav />
         <div className='hero-body'>
           <div className='container has-text-centered'>
             <p className='title'>
@@ -35,3 +26,5 @@ export default function Splash() {
     </>
   )
 }
+
+export default Splash

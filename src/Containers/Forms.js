@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Forms() {
+function Forms() {
     return (
         <div>
             This is the forms container
         </div>
     )
 }
+
+export default Forms
