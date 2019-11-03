@@ -1,11 +1,9 @@
 import React from 'react'
-import CssBaseLine from '@material-ui/core/CssBaseline'
 import { BrowserRouter as Switch, Route } from 'react-router-dom'
 import { Forms, Newsfeed, Splash } from './Containers'
 
 const App = () => {
   return <>
-    <CssBaseLine />
 
     <Switch>
       <Route exact path="/">

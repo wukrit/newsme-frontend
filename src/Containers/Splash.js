@@ -1,33 +1,37 @@
 import React from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import { Toolbar, InputBase, Paper, Box } from '@material-ui/core'
-import '../Styles/hero.css'
+import { BrowserRouter as Link } from 'react-router-dom'
 
 export default function Splash() {
-    return (
-        <>
-
-        <AppBar position="static">
-            <Toolbar>
-
-            </Toolbar>
-        </AppBar>
-
-        <div className="hero">
-            <h1 className="hero-text">
-                Hero Text Goes Here
-            </h1>
-            <Box width="25%" className="hero-input">
-                <Paper>
-                    <InputBase
-                        fullWidth={true}
-                        autoFocus={true}
-                        placeholder="Enter your email here"
-                    />
-                </Paper>
-            </Box>
+  return (
+    <>
+      <section className='hero is-link is-fullheight-with-navbar'>
+        <div className='hero-head'>
+          <nav className='navbar'>
+            <div className='container'>
+              <div className='navbar-brand'>
+                <span className='title'>NewsMe</span>
+              </div>
+            </div>
+          </nav>
         </div>
 
-        </>
-    )
+        <div className='hero-body'>
+          <div className='container has-text-centered'>
+            <p className='title'>
+              An AI Enhanced <br /> News Experience
+            </p>
+            <p className='subtitle'>
+              Get tailored news sent straight <br /> to your inbox every morning
+            </p>
+          </div>
+        </div>
+
+        <div className='hero-foot'>
+          <div className='container has-text-centered'>
+            <p className='title'>v</p>
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }
