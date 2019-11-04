@@ -11,6 +11,7 @@ function Newsfeed({ state }) {
     <>
       <nav className='navbar'></nav>
       <div className='container is-widescreen'>
+        {/* Add welcome message for user here once we have namne */}
         <h2 className='title'>Newsfeed {date()}</h2>
         <p className='subtitle'>Here are the top headlines from yesterday:</p>
         <Feed />
