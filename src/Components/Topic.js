@@ -6,17 +6,17 @@ function Topic({ title, articles }) {
     if (Array.isArray(articles)) {
       console.log(articles)
       let articleArr = []
-      articles.map(article => (
+      articles.map(article =>
         articleArr.push(<Article article={article} key={article.id} />)
-      ))
+      )
       return articleArr
     }
   }
   return (
     <div>
-      {title}
-      <br />
+      <h2 className='title'>{title}</h2>
       {renderArticles()}
+      <br />
     </div>
   )
 }
