@@ -1,22 +1,30 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import feedActions from '../Redux/Actions/feedActions'
+import { Topic } from '../Components'
 
-function Feed({ state, fetchFeed }) {
+function Feed({ userState, feedState, fetchFeed }) {
   useEffect(() => {
-    fetchFeed(state.token)
-  }, [state])
+    fetchFeed(userState.token)
+  }, [userState, fetchFeed])
 
-  // const renderTopics = feed => {
-  //   for (array in feed) {
-  //     <Topic articles={array} />
-  //   }
-  // }
+  const renderTopics = () => {
+    if (feedState !== {}) {
+      let topicsArr = []
+      for (let [key, value] of Object.entries(feedState)) {
+        topicsArr.push(<Topic title={key} articles={value} />)
+      }
+      return topicsArr
+    }
+  }
 
-  return <div></div>
+  return <div>{renderTopics()}</div>
 }
 
-const mapStateToProps = state => ({ state: state.user })
+const mapStateToProps = state => ({
+  userState: state.user,
+  feedState: state.feed
+})
 const mapDispatchToProps = {
   fetchFeed: feedActions.fetchFeed
 }

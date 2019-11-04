@@ -10,7 +10,7 @@ const App = ({ user, persistUser }) => {
     if (token !== undefined && token) {
       persistUser(token)
     }
-  }, [])
+  }, [persistUser])
 
   const handleHomeRedirect = () => {
     if (user.user) {

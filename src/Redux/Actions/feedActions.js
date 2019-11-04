@@ -7,7 +7,7 @@ const fetchFeed = (token) => dispatch => {
     }
   })
     .then(response => response.json())
-    .then(feed => console.log(feed))
+    .then(feed => dispatch({type: 'SET_FEED', payload: feed}))
 }
 
 export default {

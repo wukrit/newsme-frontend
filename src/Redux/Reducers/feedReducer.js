@@ -5,8 +5,8 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
 
-  case 'SET_TOPICS':
-    return { ...state, ...payload }
+  case 'SET_FEED':
+    return { ...payload }
 
   default:
     return state

@@ -17,7 +17,6 @@ function Newsfeed({ state }) {
 }
 
 const mapStateToProps = state => ({ state: state.user })
-const mapDispatchToProps = {}
 export default connect(
   mapStateToProps,
   null
