@@ -12,10 +12,7 @@ function SignupForm({ state, dispatch, signup }) {
     if (state.step < 3) {
       dispatch({ type: 'NEXT_STEP' })
     } else {
-      // debugger
       const { email, name, password } = state
-      console.log(email, name, password)
-      console.log(signup)
       signup({ email, name, password })
     }
   }
