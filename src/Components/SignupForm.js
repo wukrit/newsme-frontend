@@ -11,7 +11,7 @@ const handleSubmit = (event, dispatch) => {
 }
 
 const handleInput = (event, dispatch) => {
-  dispatch({ type: 'SET_DRAFT', payload: event.target.value })
+  dispatch({ type: 'SET_EMAIL', payload: event.target.value })
 }
 
 function SignupForm({ state, dispatch }) {
