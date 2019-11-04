@@ -1,9 +1,10 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import userReducer from './Reducers/userReducer'
+import { userReducer, signupReducer } from './reducerExporter'
 
 const reducers = combineReducers({
-    user: userReducer
+  user: userReducer,
+  signup: signupReducer
 })
 
 export default createStore(reducers, applyMiddleware(thunk))
