@@ -1,3 +1,5 @@
+import { apiUrl } from '../../config'
+
 const setEmail = payload => ({
   type: 'SET_EMAIL',
   payload

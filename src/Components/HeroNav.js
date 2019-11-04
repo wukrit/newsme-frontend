@@ -3,26 +3,26 @@ import UserActions from '../Redux/Actions/userActions'
 import SignupActions from '../Redux/Actions/signupActions'
 import { connect } from 'react-redux'
 
-const handleEmailChange = (event, setEmail) => {
-  setEmail(event.target.value)
-}
-
-const handlePasswordChange = (event, setPassword) => {
-  setPassword(event.target.value)
-}
-
-const handleSubmit = (event, state, login) => {
-  event.preventDefault()
-  const userObj = {
-    email: state.email,
-    password: state.password
-  }
-  login(userObj)
-  event.target.reset()
-  return false
-}
-
 function HeroNav({ state, login, setEmail, setPassword }) {
+  const handleEmailChange = event => {
+    setEmail(event.target.value)
+  }
+
+  const handlePasswordChange = event => {
+    setPassword(event.target.value)
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    const userObj = {
+      email: state.email,
+      password: state.password
+    }
+    login(userObj)
+    event.target.reset()
+    return false
+  }
+
   return (
     <div className='hero-head'>
       <nav className='navbar'>
@@ -33,14 +33,14 @@ function HeroNav({ state, login, setEmail, setPassword }) {
           <div className='navbar-end is-hidden-touch'>
             <form
               className='field is-horizontal'
-              onSubmit={event => handleSubmit(event, state, login)}
+              onSubmit={event => handleSubmit(event)}
             >
               <input
                 className='input is-small'
                 name='email'
                 type='email'
                 placeholder='Email'
-                onChange={event => handleEmailChange(event, setEmail)}
+                onChange={event => handleEmailChange(event)}
                 value={state.email_draft}
               />
               <input
@@ -48,7 +48,7 @@ function HeroNav({ state, login, setEmail, setPassword }) {
                 name='password'
                 type='password'
                 placeholder='Password'
-                onChange={event => handlePasswordChange(event, setPassword)}
+                onChange={event => handlePasswordChange(event)}
                 value={state.password_draft}
               />
               <input

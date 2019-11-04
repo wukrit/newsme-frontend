@@ -6,22 +6,19 @@ function SignupForm({ state, dispatch }) {
     event.target.classList.toggle('is-primary')
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault()
     dispatch({ type: 'SET_EMAIL', payload: event.target.email.value })
   }
 
-  const handleInput = (event) => {
+  const handleInput = event => {
     dispatch({ type: 'SET_EMAIL', payload: event.target.value })
   }
 
   return (
     <div className='columns is-desktop'>
       <div className='column is-one-third is-offset-one-third is-desktop'>
-        <form
-          className='control'
-          onSubmit={event => handleSubmit(event)}
-        >
+        <form className='control' onSubmit={event => handleSubmit(event)}>
           <input
             className='input'
             type='email'

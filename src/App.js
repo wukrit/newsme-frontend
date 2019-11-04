@@ -4,10 +4,9 @@ import { BrowserRouter as Switch, Route, Redirect } from 'react-router-dom'
 import { Forms, Newsfeed, Splash } from './Containers'
 import UserActions from './Redux/Actions/userActions'
 
-const App = ({user, persistUser}) => {
-
+const App = ({ user, persistUser }) => {
   useEffect(() => {
-    let token = localStorage.getItem("token")
+    let token = localStorage.getItem('token')
     if (token !== undefined && token) {
       persistUser(token)
     }
@@ -15,7 +14,7 @@ const App = ({user, persistUser}) => {
 
   const handleHomeRedirect = () => {
     if (user.user) {
-      return <Redirect to="/feed" />
+      return <Redirect to='/feed' />
     } else {
       return <Splash />
     }
@@ -42,4 +41,5 @@ const mapDispatchToProps = {
 }
 export default connect(
   mapStateToProps,
-  mapDispatchToProps)(App)
+  mapDispatchToProps
+)(App)
