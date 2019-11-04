@@ -8,11 +8,14 @@ function Newsfeed({ state }) {
     return `${today.getMonth() + 1}-${today.getDate()}-${today.getFullYear()}`
   }
   return (
-    <div className='container is-widescreen'>
-      <h2 className='title'>Newsfeed {date()}</h2>
-      <p className='subtitle'>Here are the top headlines from yesterday:</p>
-      <Feed />
-    </div>
+    <>
+      <nav className='navbar'></nav>
+      <div className='container is-widescreen'>
+        <h2 className='title'>Newsfeed {date()}</h2>
+        <p className='subtitle'>Here are the top headlines from yesterday:</p>
+        <Feed />
+      </div>
+    </>
   )
 }
 
