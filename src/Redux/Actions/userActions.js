@@ -24,7 +24,6 @@ const persist = token => dispatch => {
     .then(response => response.json())
     .then(user => {
       dispatch({ type: 'SET_USER', payload: user })
-      console.log(user)
     })
 }
 

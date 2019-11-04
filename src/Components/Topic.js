@@ -4,7 +4,6 @@ import { Article } from '../Components'
 function Topic({ title, articles }) {
   const renderArticles = () => {
     if (Array.isArray(articles)) {
-      console.log(articles)
       let articleArr = []
       articles.map(article =>
         articleArr.push(<Article article={article} key={article.id} />)
