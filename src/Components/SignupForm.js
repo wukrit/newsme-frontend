@@ -16,7 +16,7 @@ function SignupForm({ state, dispatch, signup }) {
       const { email, name, password } = state
       console.log(email, name, password)
       console.log(signup)
-      signup({email, name, password})
+      signup({ email, name, password })
     }
   }
 
@@ -26,16 +26,12 @@ function SignupForm({ state, dispatch, signup }) {
 
   const handleSteps = num => {
     let visible = ''
-    switch (num) {
-      case 1:
-        visible = 'email'
-        break
-      case 2:
-        visible = 'text'
-        break
-      case 3:
-        visible = 'password'
-        break
+    if (num === 1) {
+      visible = 'email'
+    } else if (num === 2) {
+      visible = 'text'
+    } else if (num === 3) {
+      visible = 'password'
     }
     return num === state.step ? visible : 'hidden'
   }

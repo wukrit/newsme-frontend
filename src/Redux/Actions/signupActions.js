@@ -11,7 +11,6 @@ const setPassword = payload => ({
 })
 
 const signup = dispatch => userObj => {
-  debugger
   fetch(`${apiUrl}/users`, {
     method: 'POST',
     headers: {
