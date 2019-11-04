@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import signupActions from '../Redux/Actions/signupActions'
+import SignupActions from '../Redux/Actions/signupActions'
 
 function SignupForm({ state, dispatch, signup }) {
   const handleFocus = event => {
@@ -12,7 +12,10 @@ function SignupForm({ state, dispatch, signup }) {
     if (state.step < 3) {
       dispatch({ type: 'NEXT_STEP' })
     } else {
+      // debugger
       const { email, name, password } = state
+      console.log(email, name, password)
+      console.log(signup)
       signup({email, name, password})
     }
   }
@@ -86,8 +89,8 @@ function SignupForm({ state, dispatch, signup }) {
 
 const mapStateToProps = state => ({ state: state.signup })
 const mapDispatchToProps = dispatch => ({
-  dispatch: dispatch,
-  signup: signupActions.signup
+  dispatch,
+  signup: dispatch(SignupActions.signup)
 })
 export default connect(
   mapStateToProps,

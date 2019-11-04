@@ -10,7 +10,8 @@ const setPassword = payload => ({
   payload
 })
 
-const signup = userObj => dispatch => {
+const signup = dispatch => userObj => {
+  debugger
   fetch(`${apiUrl}/users`, {
     method: 'POST',
     headers: {
