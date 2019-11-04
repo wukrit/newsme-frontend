@@ -1,5 +1,5 @@
 import React from 'react'
-import Actions from '../Redux/Actions/signupActions'
+import Actions from '../Redux/Actions/userActions'
 import { connect } from 'react-redux'
 
 const handleEmailChange = (event, setEmail) => {
@@ -10,18 +10,18 @@ const handlePasswordChange = (event, setPassword) => {
   setPassword(event.target.value)
 }
 
-const handleSubmit = (event, state, signup) => {
+const handleSubmit = (event, state, login) => {
   event.preventDefault()
   const userObj = {
     email: state.email,
     password: state.password
   }
-  signup(userObj)
+  login(userObj)
   event.target.reset()
   return false
 }
 
-function HeroNav({ state, signup, setEmail, setPassword }) {
+function HeroNav({ state, login, setEmail, setPassword }) {
   return (
     <div className='hero-head'>
       <nav className='navbar'>
@@ -32,7 +32,7 @@ function HeroNav({ state, signup, setEmail, setPassword }) {
           <div className='navbar-end is-hidden-touch'>
             <form
               className='field is-horizontal'
-              onSubmit={event => handleSubmit(event, state, signup)}
+              onSubmit={event => handleSubmit(event, state, login)}
             >
               <input
                 className='input is-small'
@@ -66,7 +66,7 @@ function HeroNav({ state, signup, setEmail, setPassword }) {
 const mapStateToProps = state => ({ state: state.signup, user: state.user })
 
 const mapDispatchToProps = {
-  signup: Actions.signup,
+  login: Actions.login,
   setEmail: Actions.setEmail,
   setPassword: Actions.setPassword
 }
