@@ -12,7 +12,7 @@ function Feed({ userState, feedState, fetchFeed }) {
     if (feedState !== {}) {
       let topicsArr = []
       for (let [key, value] of Object.entries(feedState)) {
-        topicsArr.push(<Topic title={key} articles={value} />)
+        topicsArr.push(<Topic title={key} articles={value} key={key} />)
       }
       return topicsArr
     }
