@@ -1,11 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-function Newsfeed() {
-    return (
-        <div>
-            This is the newsfeed container
-        </div>
-    )
+function Newsfeed({ user }) {
+  return <div></div>
 }
 
-export default Newsfeed
+const mapStateToProps = state => ({ state: state.user })
+const mapDispatchToProps = {}
+export default connect(
+  mapStateToProps,
+  null
+)(Newsfeed)
