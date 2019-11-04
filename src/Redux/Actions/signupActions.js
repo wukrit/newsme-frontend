@@ -27,8 +27,38 @@ const signup = userObj => dispatch => {
     })
 }
 
+const login = userObj => dispatch => {
+  fetch(`${apiUrl}/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userObj)
+  })
+    .then(response => response.json())
+    .then(user => {
+      dispatch({ type: 'SET_USER', payload: user })
+      console.log(user)
+    })
+}
+
+const persist = token => dispatch => {
+  fetch(`${apiUrl}/login`, {
+    headers: {
+      Authorization: token
+    }
+  })
+    .then(response => response.json())
+    .then(user => {
+      dispatch({ type: 'SET_USER', payload: user })
+      console.log(user)
+    })
+}
+
 export default {
   signup,
+  login,
+  persist,
   setEmail,
   setPassword
 }

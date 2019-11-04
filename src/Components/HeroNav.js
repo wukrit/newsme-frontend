@@ -18,6 +18,7 @@ const handleSubmit = (event, state, signup) => {
   }
   signup(userObj)
   event.target.reset()
+  return false
 }
 
 function HeroNav({ state, signup, setEmail, setPassword }) {
@@ -62,7 +63,7 @@ function HeroNav({ state, signup, setEmail, setPassword }) {
   )
 }
 
-const mapStateToProps = state => ({ state: state.signup })
+const mapStateToProps = state => ({ state: state.signup, user: state.user })
 
 const mapDispatchToProps = {
   signup: Actions.signup,
