@@ -1,9 +1,14 @@
 import React from 'react'
 
-function Article(props) {
+function Article({article}) {
   return (
     <div>
-      Hello
+      <h3 className='title'>
+        {article.headline}
+      </h3>
+      <p>
+        {article.body}
+      </p>
     </div>
   )
 }

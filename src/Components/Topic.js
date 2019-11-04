@@ -6,9 +6,9 @@ function Topic({ title, articles }) {
     if (Array.isArray(articles)) {
       console.log(articles)
       let articleArr = []
-      articles.map(article => {
-        articleArr.push(<Article articleObj={article} key={article.id} />)
-      })
+      articles.map(article => (
+        articleArr.push(<Article article={article} key={article.id} />)
+      ))
       return articleArr
     }
   }
