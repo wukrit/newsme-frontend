@@ -1,23 +1,26 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { apiUrl } from '../config'
+import feedActions from '../Redux/Actions/feedActions'
 
-function Feed({ state }) {
+function Feed({ state, fetchFeed }) {
   useEffect(() => {
-    fetch(`${apiUrl}/users/feed`, {
-      headers: {
-        "Authorization": state.token
-      }
-    })
-      .then(response => response.json())
-      .then(console.log)
+    fetchFeed(state.token)
   }, [state])
+
+  // const renderTopics = feed => {
+  //   for (array in feed) {
+  //     <Topic articles={array} />
+  //   }
+  // }
+
   return <div></div>
 }
 
 const mapStateToProps = state => ({ state: state.user })
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  fetchFeed: feedActions.fetchFeed
+}
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Feed)
