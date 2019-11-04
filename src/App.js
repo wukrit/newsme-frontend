@@ -13,11 +13,11 @@ const App = ({ user, persistUser }) => {
   }, [persistUser])
 
   const handleHomeRedirect = () => {
-    if (user.user) {
-      return <Redirect to='/feed' />
-    } else {
-      return <Splash />
-    }
+    return user.user ? <Redirect to='/feed' /> : <Splash />
+  }
+
+  const handleFeedRedirect = () => {
+    return !user.user ? <Redirect to='/' /> : <Newsfeed />
   }
 
   return (
@@ -27,9 +27,7 @@ const App = ({ user, persistUser }) => {
         <Route exact path='/login'>
           <Forms />
         </Route>
-        <Route exact path='/feed'>
-          <Newsfeed />
-        </Route>
+        <Route exact path='/feed' render={handleFeedRedirect} />
       </Switch>
     </>
   )
