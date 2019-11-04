@@ -1,26 +1,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const handleFocus = event => {
-  event.target.classList.toggle('is-primary')
-}
-
-const handleSubmit = (event, dispatch) => {
-  event.preventDefault()
-  dispatch({ type: 'SET_EMAIL', payload: event.target.email.value })
-}
-
-const handleInput = (event, dispatch) => {
-  dispatch({ type: 'SET_EMAIL', payload: event.target.value })
-}
-
 function SignupForm({ state, dispatch }) {
+  const handleFocus = event => {
+    event.target.classList.toggle('is-primary')
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    dispatch({ type: 'SET_EMAIL', payload: event.target.email.value })
+  }
+
+  const handleInput = (event) => {
+    dispatch({ type: 'SET_EMAIL', payload: event.target.value })
+  }
+
   return (
     <div className='columns is-desktop'>
       <div className='column is-one-third is-offset-one-third is-desktop'>
         <form
           className='control'
-          onSubmit={event => handleSubmit(event, dispatch)}
+          onSubmit={event => handleSubmit(event)}
         >
           <input
             className='input'
@@ -29,7 +29,7 @@ function SignupForm({ state, dispatch }) {
             placeholder='Email'
             onFocus={handleFocus}
             onBlur={handleFocus}
-            onChange={event => handleInput(event, dispatch)}
+            onChange={event => handleInput(event)}
             value={state.draft}
           />
           <div className='column is-2 is-offset-4 is-desktop'>

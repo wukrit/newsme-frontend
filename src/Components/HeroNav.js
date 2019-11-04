@@ -1,5 +1,6 @@
 import React from 'react'
-import Actions from '../Redux/Actions/userActions'
+import UserActions from '../Redux/Actions/userActions'
+import SignupActions from '../Redux/Actions/signupActions'
 import { connect } from 'react-redux'
 
 const handleEmailChange = (event, setEmail) => {
@@ -66,9 +67,9 @@ function HeroNav({ state, login, setEmail, setPassword }) {
 const mapStateToProps = state => ({ state: state.signup, user: state.user })
 
 const mapDispatchToProps = {
-  login: Actions.login,
-  setEmail: Actions.setEmail,
-  setPassword: Actions.setPassword
+  login: UserActions.login,
+  setEmail: SignupActions.setEmail,
+  setPassword: SignupActions.setPassword
 }
 
 export default connect(

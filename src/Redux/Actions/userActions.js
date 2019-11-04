@@ -1,15 +1,5 @@
 import { apiUrl } from '../../config'
 
-const setEmail = payload => ({
-  type: 'SET_EMAIL',
-  payload
-})
-
-const setPassword = payload => ({
-  type: 'SET_PASSWORD',
-  payload
-})
-
 const signup = userObj => dispatch => {
   fetch(`${apiUrl}/users`, {
     method: 'POST',
@@ -58,7 +48,5 @@ const persist = token => dispatch => {
 export default {
   signup,
   login,
-  persist,
-  setEmail,
-  setPassword
+  persist
 }

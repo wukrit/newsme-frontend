@@ -1,14 +1,30 @@
-import React from 'react'
-import { BrowserRouter as Switch, Route } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { BrowserRouter as Switch, Route, Redirect } from 'react-router-dom'
 import { Forms, Newsfeed, Splash } from './Containers'
+import UserActions from './Redux/Actions/userActions'
 
-const App = () => {
+const App = ({user, persistUser}) => {
+
+  useEffect(() => {
+    let token = localStorage.getItem("token")
+    if (token !== undefined && token) {
+      persistUser(token)
+    }
+  }, [])
+
+  const handleHomeRedirect = () => {
+    if (user.user) {
+      return <Redirect to="/feed" />
+    } else {
+      return <Splash />
+    }
+  }
+
   return (
     <>
       <Switch>
-        <Route exact path='/'>
-          <Splash />
-        </Route>
+        <Route exact path='/' render={handleHomeRedirect} />
         <Route exact path='/login'>
           <Forms />
         </Route>
@@ -20,4 +36,10 @@ const App = () => {
   )
 }
 
-export default App
+const mapStateToProps = state => ({ user: state.user })
+const mapDispatchToProps = {
+  persistUser: UserActions.persist
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps)(App)
