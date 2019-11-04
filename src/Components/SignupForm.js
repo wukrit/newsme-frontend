@@ -1,19 +1,40 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { stat } from 'fs'
+import signupActions from '../Redux/Actions/signupActions'
 
-function SignupForm({ state, dispatch }) {
+function SignupForm({ state, dispatch, signup }) {
   const handleFocus = event => {
     event.target.classList.toggle('is-primary')
   }
 
   const handleSubmit = event => {
     event.preventDefault()
-    dispatch({ type: 'SET_EMAIL', payload: event.target.email.value })
+    if (state.step < 3) {
+      dispatch({ type: 'NEXT_STEP' })
+    } else {
+      const { email, name, password } = state
+      signup({email, name, password})
+    }
   }
 
   const handleInput = (event, input) => {
     dispatch({ type: `SET_${input}`, payload: event.target.value })
+  }
+
+  const handleSteps = num => {
+    let visible = ''
+    switch (num) {
+      case 1:
+        visible = 'email'
+        break
+      case 2:
+        visible = 'text'
+        break
+      case 3:
+        visible = 'password'
+        break
+    }
+    return num === state.step ? visible : 'hidden'
   }
 
   return (
@@ -22,7 +43,7 @@ function SignupForm({ state, dispatch }) {
         <form className='control' onSubmit={event => handleSubmit(event)}>
           <input
             className='input'
-            type='email'
+            type={handleSteps(1)}
             name='email'
             placeholder='Enter Your Email'
             onFocus={handleFocus}
@@ -32,7 +53,7 @@ function SignupForm({ state, dispatch }) {
           />
           <input
             className='input'
-            type='text'
+            type={handleSteps(2)}
             name='name'
             placeholder='Enter Your First Name'
             onFocus={handleFocus}
@@ -42,7 +63,7 @@ function SignupForm({ state, dispatch }) {
           />
           <input
             className='input'
-            type='password'
+            type={handleSteps(3)}
             name='password'
             placeholder='Enter a Secure Password'
             onFocus={handleFocus}
@@ -51,7 +72,11 @@ function SignupForm({ state, dispatch }) {
             value={state.password}
           />
           <div className='column is-2 is-offset-4 is-desktop'>
-            <input className='button is-link' type='submit' value='Continue' />
+            <input
+              className='button is-link'
+              type='submit'
+              value={state.step === 3 ? 'Create Account' : 'Continue'}
+            />
           </div>
         </form>
       </div>
@@ -60,8 +85,11 @@ function SignupForm({ state, dispatch }) {
 }
 
 const mapStateToProps = state => ({ state: state.signup })
-
+const mapDispatchToProps = dispatch => ({
+  dispatch: dispatch,
+  signup: signupActions.signup
+})
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(SignupForm)
