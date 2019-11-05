@@ -32,7 +32,7 @@ function Edit({
       />
       <label className='label'>Password:</label>
       <input className='input' name='password' type='password' />
-      <label className='label'>Edit Your Subscriptions</label>
+      <label className='label'>Edit Your Subscriptions:</label>
       {topicState.topics ? renderTopics() : null}
       <br />
       <input className='button is-link' type='submit' value='Submit Changes' />
@@ -44,9 +44,10 @@ function Edit({
       return (
         <Fragment key={`${topic.id}-label`}>
           <label className='checkbox'>
-            <input type='checkbox' defaultChecked='false' />
+            <input type='checkbox' />
             {topic.title}
           </label>
+          <br />
         </Fragment>
       )
     })
@@ -61,7 +62,13 @@ function Edit({
         </h2>
         <p className='subtitle'>Edit Your Settings</p>
         <div className='column is-half'>
-          {userState.user ? renderForm() : null}
+          {userState.user ? (
+            renderForm()
+          ) : (
+            <progress className='progress is-medium is-link' max='100'>
+              45%
+            </progress>
+          )}
         </div>
       </div>
     </>
