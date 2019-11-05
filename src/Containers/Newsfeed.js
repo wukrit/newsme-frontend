@@ -11,7 +11,9 @@ function Newsfeed({ state }) {
     <>
       <nav className='navbar'></nav>
       <div className='container is-widescreen'>
-        <h2 className='title'>{ state.user.name }'s Newsfeed {date()}</h2>
+        <h2 className='title'>
+          {state.user.name}'s Newsfeed {date()}
+        </h2>
         <p className='subtitle'>Here are the top headlines from yesterday:</p>
         <Feed />
       </div>
