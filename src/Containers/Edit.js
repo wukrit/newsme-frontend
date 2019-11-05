@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Fragment } from 'react'
 import { connect } from 'react-redux'
 import TopicActions from '../Redux/Actions/topicActions'
 
 function Edit({
   userState,
-  topicsState,
+  topicState,
   dispatch,
   getTopics,
   getSubscriptions
@@ -33,13 +33,23 @@ function Edit({
       <label className='label'>Password:</label>
       <input className='input' name='password' type='password' />
       <label className='label'>Edit Your Subscriptions</label>
-      {renderTopics(userState.token)}
+      {topicState.topics ? renderTopics() : null}
+      <br />
       <input className='button is-link' type='submit' value='Submit Changes' />
     </form>
   )
 
-  const renderTopics = token => {
-    console.log(topicsState)
+  const renderTopics = () => {
+    return topicState.topics.map(topic => {
+      return (
+        <Fragment key={`${topic.id}-label`}>
+          <label className='checkbox'>
+            <input type='checkbox' defaultChecked='false' />
+            {topic.title}
+          </label>
+        </Fragment>
+      )
+    })
   }
 
   return (
