@@ -41,6 +41,7 @@ const editUser = dispatch => (body, token) => {
   .then(response => response.json())
   .then(user => {
     dispatch({ type: 'SET_USER', payload: user })
+    alert("Your settings have been updated")
     console.log(user)
   })
 }
