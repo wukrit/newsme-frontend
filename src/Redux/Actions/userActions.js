@@ -11,7 +11,6 @@ const login = userObj => dispatch => {
     .then(response => response.json())
     .then(user => {
       dispatch({ type: 'SET_USER', payload: user })
-      console.log(user)
     })
 }
 
@@ -28,8 +27,6 @@ const persist = token => dispatch => {
 }
 
 const editUser = dispatch => (body, token) => {
-  console.log(body)
-  console.log(token)
   fetch(`${apiUrl}/users/edit`, {
     method: 'PATCH',
     headers: {
@@ -42,7 +39,6 @@ const editUser = dispatch => (body, token) => {
     .then(user => {
       dispatch({ type: 'SET_USER', payload: user })
       alert('Your settings have been updated')
-      console.log(user)
     })
 }
 

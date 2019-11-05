@@ -7,7 +7,6 @@ import { NavBar } from '../Components'
 function Edit({
   userState,
   topicState,
-  dispatch,
   getTopics,
   getSubscriptions,
   editUser,
@@ -105,7 +104,6 @@ function Edit({
             renderForm()
           ) : (
             <progress className='progress is-medium is-link' max='100'>
-              45%
             </progress>
           )}
         </div>
