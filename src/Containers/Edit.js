@@ -10,7 +10,8 @@ function Edit({
   dispatch,
   getTopics,
   getSubscriptions,
-  editUser
+  editUser,
+  deleteUser
 }) {
   useEffect(() => {
     getTopics()
@@ -32,6 +33,10 @@ function Edit({
       }
     }
     editUser(editBody, userState.token)
+  }
+
+  const handleDeleteUser = () => {
+      deleteUser(userState.token)
   }
 
   const renderForm = () => (
@@ -56,6 +61,11 @@ function Edit({
       {topicState.topics && topicState.subs ? renderTopics() : null}
       <br />
       <input className='button is-link' type='submit' value='Submit Changes' />
+      <br />
+      <br />
+      <button className='button is-danger' onClick={handleDeleteUser}>
+        Delete Account
+      </button>
     </form>
   )
 
@@ -73,7 +83,7 @@ function Edit({
       ) : (
         <Fragment key={`${topic.id}-label`}>
           <label className='checkbox'>
-            <input type='checkbox' name={topic.title}/>
+            <input type='checkbox' name={topic.title} />
             {topic.title}
           </label>
           <br />
@@ -112,7 +122,8 @@ const mapDispatchToProps = dispatch => ({
   dispatch,
   getTopics: dispatch(TopicActions.getAllTopics),
   getSubscriptions: dispatch(TopicActions.getSubscriptions),
-  editUser: dispatch(UserActions.editUser)
+  editUser: dispatch(UserActions.editUser),
+  deleteUser: dispatch(UserActions.deleteUser)
 })
 export default connect(
   mapStateToProps,

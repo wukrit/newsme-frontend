@@ -34,20 +34,30 @@ const editUser = dispatch => (body, token) => {
     method: 'PATCH',
     headers: {
       Authorization: token,
-      "Content-Type": 'application/json'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify(body)
   })
-  .then(response => response.json())
-  .then(user => {
-    dispatch({ type: 'SET_USER', payload: user })
-    alert("Your settings have been updated")
-    console.log(user)
+    .then(response => response.json())
+    .then(user => {
+      dispatch({ type: 'SET_USER', payload: user })
+      alert('Your settings have been updated')
+      console.log(user)
+    })
+}
+
+const deleteUser = dispatch => token => {
+  fetch(`${apiUrl}/users/delete`, {
+    headers: {
+      Authorization: token
+    }
   })
+  dispatch({ type: 'CLEAR_USER' })
 }
 
 export default {
   login,
   persist,
-  editUser
+  editUser,
+  deleteUser
 }
