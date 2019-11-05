@@ -27,8 +27,8 @@ function Edit({
       subs: []
     }
     for (let i = 0; i < form.elements.length; i++) {
-      if (form.elements[i].type == 'checkbox' && form.elements[i].checked) {
-        editBody.subs.push(form.elements[i].name)
+      if (form.elements[i].type == 'checkbox') {
+        editBody.subs.push([form.elements[i].name, form.elements[i].checked])
       }
     }
     editUser(editBody, userState.token)
