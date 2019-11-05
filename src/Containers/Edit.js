@@ -30,7 +30,7 @@ function Edit({
         editBody.subs.push(form.elements[i].name)
       }
     }
-    editUser(editBody)
+    editUser(editBody, userState.token)
   }
 
   const renderForm = () => (

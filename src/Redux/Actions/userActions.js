@@ -27,8 +27,19 @@ const persist = token => dispatch => {
     })
 }
 
-const editUser = dispatch => body => {
+const editUser = dispatch => (body, token) => {
   console.log(body)
+  console.log(token)
+  fetch(`${apiUrl}/users/edit`, {
+    method: 'PATCH',
+    headers: {
+      Authorization: token,
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(body)
+  })
+  .then(response => response.json())
+  .then(console.log)
 }
 
 export default {
