@@ -27,7 +27,12 @@ const persist = token => dispatch => {
     })
 }
 
+const editUser = dispatch => body => {
+  console.log(body)
+}
+
 export default {
   login,
-  persist
+  persist,
+  editUser
 }

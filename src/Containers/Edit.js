@@ -1,21 +1,39 @@
 import React, { useEffect, Fragment } from 'react'
 import { connect } from 'react-redux'
 import TopicActions from '../Redux/Actions/topicActions'
+import UserActions from '../Redux/Actions/userActions'
 
 function Edit({
   userState,
   topicState,
   dispatch,
   getTopics,
-  getSubscriptions
+  getSubscriptions,
+  editUser
 }) {
   useEffect(() => {
     getTopics()
     getSubscriptions(userState.token)
   }, [userState])
 
+  const handleEditForm = event => {
+    event.preventDefault()
+    const form = event.target
+    const editBody = {
+      name: form.name.value,
+      email: form.email.value,
+      password: form.password.value
+    }
+    for (let i = 0; i < form.elements.length; i++) {
+      if (form.elements[i].type == 'checkbox' && form.elements[i].checked) {
+        editBody[form.elements[i].name] = form.elements[i].checked
+      }
+    }
+    editUser(editBody)
+  }
+
   const renderForm = () => (
-    <form className='control'>
+    <form className='control' onSubmit={event => handleEditForm(event)}>
       <label className='label'>Name:</label>
       <input
         className='input'
@@ -44,7 +62,7 @@ function Edit({
       return (
         <Fragment key={`${topic.id}-label`}>
           <label className='checkbox'>
-            <input type='checkbox' />
+            <input type='checkbox' name={topic.title} />
             {topic.title}
           </label>
           <br />
@@ -82,7 +100,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   dispatch,
   getTopics: dispatch(TopicActions.getAllTopics),
-  getSubscriptions: dispatch(TopicActions.getSubscriptions)
+  getSubscriptions: dispatch(TopicActions.getSubscriptions),
+  editUser: dispatch(UserActions.editUser)
 })
 export default connect(
   mapStateToProps,
