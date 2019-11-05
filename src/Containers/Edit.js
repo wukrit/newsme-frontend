@@ -53,18 +53,27 @@ function Edit({
       <label className='label'>Password:</label>
       <input className='input' name='password' type='password' />
       <label className='label'>Edit Your Subscriptions:</label>
-      {topicState.topics ? renderTopics() : null}
+      {topicState.topics && topicState.subs ? renderTopics() : null}
       <br />
       <input className='button is-link' type='submit' value='Submit Changes' />
     </form>
   )
 
   const renderTopics = () => {
+    const subbed_topics = topicState.subs.map(sub => sub.topic_id)
     return topicState.topics.map(topic => {
-      return (
+      return subbed_topics.includes(topic.id) ? (
         <Fragment key={`${topic.id}-label`}>
           <label className='checkbox'>
-            <input type='checkbox' name={topic.title} />
+            <input type='checkbox' name={topic.title} defaultChecked />
+            {topic.title}
+          </label>
+          <br />
+        </Fragment>
+      ) : (
+        <Fragment key={`${topic.id}-label`}>
+          <label className='checkbox'>
+            <input type='checkbox' name={topic.title}/>
             {topic.title}
           </label>
           <br />
