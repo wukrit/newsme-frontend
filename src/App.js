@@ -20,13 +20,15 @@ const App = ({ user, persistUser }) => {
     return !user.user ? <Redirect to='/' /> : <Newsfeed />
   }
 
+  const handleEditRedirect = () => {
+    return !user.user ? <Redirect to='/' /> : <Edit />
+  }
+
   return (
     <>
       <Switch>
         <Route exact path='/' render={handleHomeRedirect} />
-        <Route exact path='/edit'>
-          <Edit />
-        </Route>
+        <Route exact path='/edit' render={handleEditRedirect} />
         <Route exact path='/feed' render={handleFeedRedirect} />
       </Switch>
     </>

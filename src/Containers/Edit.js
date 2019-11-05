@@ -75,8 +75,8 @@ function Edit({
 
   return (
     <>
-      <NavBar />
       <div className='container is-widescreen'>
+        <NavBar />
         <h2 className='title'>
           Hey, {userState.user ? userState.user.name : null}
         </h2>

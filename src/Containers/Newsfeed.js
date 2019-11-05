@@ -9,8 +9,8 @@ function Newsfeed({ state }) {
   }
   return (
     <>
-      <NavBar />
       <div className='container is-widescreen'>
+        <NavBar />
         <h2 className='title'>
           {state.user.name}'s Newsfeed {date()}
         </h2>
