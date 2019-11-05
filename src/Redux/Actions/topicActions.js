@@ -1,9 +1,9 @@
-import { apiUrl } from '../config'
+import { apiUrl } from '../../config'
 
 const getAllTopics = dispatch => () => {
   fetch(`${apiUrl}/topics`)
     .then(response => response.json())
-    .then(topics => console.log(topics))
+    .then(topics => dispatch({type: 'SET_TOPICS', payload: topics}))
 }
 
 const getSubscriptions = dispatch => token => {
@@ -13,7 +13,7 @@ const getSubscriptions = dispatch => token => {
     }
   })
     .then(response => response.json())
-    .then(subscriptions => console.log(subscriptions))
+    .then(subscriptions => dispatch({type: 'SET_SUBS', payload: subscriptions}))
 }
 
 export default {
