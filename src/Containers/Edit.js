@@ -16,7 +16,7 @@ function Edit({
   useEffect(() => {
     getTopics()
     getSubscriptions(userState.token)
-  }, [userState])
+  }, [userState, getTopics, getSubscriptions])
 
   const handleEditForm = event => {
     event.preventDefault()
