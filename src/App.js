@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Switch, Route, Redirect } from 'react-router-dom'
-import { Forms, Newsfeed, Splash } from './Containers'
+import { Edit, Newsfeed, Splash } from './Containers'
 import UserActions from './Redux/Actions/userActions'
 
 const App = ({ user, persistUser }) => {
@@ -24,8 +24,8 @@ const App = ({ user, persistUser }) => {
     <>
       <Switch>
         <Route exact path='/' render={handleHomeRedirect} />
-        <Route exact path='/login'>
-          <Forms />
+        <Route exact path='/edit'>
+          <Edit />
         </Route>
         <Route exact path='/feed' render={handleFeedRedirect} />
       </Switch>

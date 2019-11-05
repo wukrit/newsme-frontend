@@ -1,9 +1,9 @@
 import Newsfeed from './Containers/Newsfeed'
-import Forms from './Containers/Forms'
+import Edit from './Containers/Edit'
 import Splash from './Containers/Splash'
 
 export {
     Newsfeed,
-    Forms,
+    Edit,
     Splash
 }
