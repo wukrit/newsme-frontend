@@ -22,11 +22,12 @@ function Edit({
     const editBody = {
       name: form.name.value,
       email: form.email.value,
-      password: form.password.value
+      password: form.password.value,
+      subs: []
     }
     for (let i = 0; i < form.elements.length; i++) {
       if (form.elements[i].type == 'checkbox' && form.elements[i].checked) {
-        editBody[form.elements[i].name] = form.elements[i].checked
+        editBody.subs.push(form.elements[i].name)
       }
     }
     editUser(editBody)
