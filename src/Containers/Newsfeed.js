@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Feed } from '../Components'
+import { Feed, NavBar } from '../Components'
 
 function Newsfeed({ state }) {
   const date = () => {
@@ -9,7 +9,7 @@ function Newsfeed({ state }) {
   }
   return (
     <>
-      <nav className='navbar'></nav>
+      <NavBar />
       <div className='container is-widescreen'>
         <h2 className='title'>
           {state.user.name}'s Newsfeed {date()}

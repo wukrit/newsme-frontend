@@ -5,6 +5,7 @@ import SignupForm from './Components/SignupForm'
 import Feed from './Components/Feed'
 import Topic from './Components/Topic'
 import Article from './Components/Article'
+import NavBar from './Components/NavBar'
 
 export {
     HeroNav,
@@ -13,5 +14,6 @@ export {
     SignupForm,
     Feed,
     Topic,
-    Article
+    Article,
+    NavBar
 }

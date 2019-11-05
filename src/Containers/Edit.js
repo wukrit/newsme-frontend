@@ -2,6 +2,7 @@ import React, { useEffect, Fragment } from 'react'
 import { connect } from 'react-redux'
 import TopicActions from '../Redux/Actions/topicActions'
 import UserActions from '../Redux/Actions/userActions'
+import { NavBar } from '../Components'
 
 function Edit({
   userState,
@@ -74,7 +75,7 @@ function Edit({
 
   return (
     <>
-      <nav className='navbar'></nav>
+      <NavBar />
       <div className='container is-widescreen'>
         <h2 className='title'>
           Hey, {userState.user ? userState.user.name : null}
