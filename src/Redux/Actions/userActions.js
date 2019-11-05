@@ -39,7 +39,10 @@ const editUser = dispatch => (body, token) => {
     body: JSON.stringify(body)
   })
   .then(response => response.json())
-  .then(console.log)
+  .then(user => {
+    dispatch({ type: 'SET_USER', payload: user })
+    console.log(user)
+  })
 }
 
 export default {
