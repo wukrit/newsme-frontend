@@ -75,7 +75,9 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
             onChange={event => handleInput(event, 'PASSWORD')}
             value={state.password}
           />
-          {topicState.topics ? <TopicForm newUser={true} visible={handleSteps(4)} /> : null}
+          {topicState.topics ? (
+            <TopicForm newUser={true} visible={handleSteps(4)} />
+          ) : null}
           <div className='column is-2 is-offset-4 is-desktop'>
             <input
               className='button is-link'
@@ -83,13 +85,17 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
               value={state.step === 3 ? 'Create Account' : 'Continue'}
             />
           </div>
+          <progress class='progress is-primary' value={state.step - 1} max='4' />
         </form>
       </div>
     </div>
   )
 }
 
-const mapStateToProps = state => ({ state: state.signup, topicState: state.topics })
+const mapStateToProps = state => ({
+  state: state.signup,
+  topicState: state.topics
+})
 const mapDispatchToProps = dispatch => ({
   dispatch,
   signup: dispatch(SignupActions.signup),
