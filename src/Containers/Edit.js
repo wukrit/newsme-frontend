@@ -1,8 +1,8 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import TopicActions from '../Redux/Actions/topicActions'
 import UserActions from '../Redux/Actions/userActions'
-import { NavBar } from '../Components'
+import { NavBar, TopicForm } from '../Components'
 
 function Edit({
   userState,
@@ -57,7 +57,7 @@ function Edit({
       <label className='label'>Password:</label>
       <input className='input' name='password' type='password' />
       <label className='label'>Edit Your Subscriptions:</label>
-      {topicState.topics && topicState.subs ? renderTopics() : null}
+      {topicState.topics && topicState.subs ? <TopicForm breaks="true" /> : null}
       <br />
       <input className='button is-link' type='submit' value='Submit Changes' />
       <br />
@@ -67,29 +67,6 @@ function Edit({
       </button>
     </form>
   )
-
-  const renderTopics = () => {
-    const subbed_topics = topicState.subs.map(sub => sub.topic_id)
-    return topicState.topics.map(topic => {
-      return subbed_topics.includes(topic.id) ? (
-        <Fragment key={`${topic.id}-label`}>
-          <label className='checkbox'>
-            <input type='checkbox' name={topic.title} defaultChecked />
-            {topic.title}
-          </label>
-          <br />
-        </Fragment>
-      ) : (
-        <Fragment key={`${topic.id}-label`}>
-          <label className='checkbox'>
-            <input type='checkbox' name={topic.title} />
-            {topic.title}
-          </label>
-          <br />
-        </Fragment>
-      )
-    })
-  }
 
   return (
     <>

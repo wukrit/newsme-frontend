@@ -6,6 +6,8 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, topics: payload }
     case 'SET_SUBS':
       return { ...state, subs: payload }
+    case 'CLEAR_SUBS':
+      return { topics: state.topics }
     default:
       return state
   }

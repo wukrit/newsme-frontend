@@ -1,19 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import SignupActions from '../Redux/Actions/signupActions'
+import TopicActions from '../Redux/Actions/topicActions'
+import { TopicForm } from '../Components'
 
-function SignupForm({ state, dispatch, signup }) {
+function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
+  useEffect(() => {
+    getTopics()
+  }, [getTopics])
+
   const handleFocus = event => {
     event.target.classList.toggle('is-primary')
   }
 
   const handleSubmit = event => {
     event.preventDefault()
-    if (state.step < 3) {
+    if (state.step < 4) {
       dispatch({ type: 'NEXT_STEP' })
     } else {
+      const subs = []
+      const form = event.target
+      for (let i = 0; i < form.elements.length; i++) {
+        if (form.elements[i].type === 'checkbox') {
+          subs.push([form.elements[i].name, form.elements[i].checked])
+        }
+      }
       const { email, name, password } = state
-      signup({ email, name, password })
+      signup({ email, name, password, subs })
     }
   }
 
@@ -29,6 +42,8 @@ function SignupForm({ state, dispatch, signup }) {
       visible = 'text'
     } else if (num === 3) {
       visible = 'password'
+    } else if (num === 4) {
+      visible = 'checkbox'
     }
     return num === state.step ? visible : 'hidden'
   }
@@ -67,6 +82,9 @@ function SignupForm({ state, dispatch, signup }) {
             onChange={event => handleInput(event, 'PASSWORD')}
             value={state.password}
           />
+          {topicState.topics ? (
+            <TopicForm newUser={true} visible={handleSteps(4)} />
+          ) : null}
           <div className='column is-2 is-offset-4 is-desktop'>
             <input
               className='button is-link'
@@ -74,16 +92,25 @@ function SignupForm({ state, dispatch, signup }) {
               value={state.step === 3 ? 'Create Account' : 'Continue'}
             />
           </div>
+          <progress
+            className='progress is-primary'
+            value={state.step - 1}
+            max='4'
+          />
         </form>
       </div>
     </div>
   )
 }
 
-const mapStateToProps = state => ({ state: state.signup })
+const mapStateToProps = state => ({
+  state: state.signup,
+  topicState: state.topics
+})
 const mapDispatchToProps = dispatch => ({
   dispatch,
-  signup: dispatch(SignupActions.signup)
+  signup: dispatch(SignupActions.signup),
+  getTopics: dispatch(TopicActions.getAllTopics)
 })
 export default connect(
   mapStateToProps,
