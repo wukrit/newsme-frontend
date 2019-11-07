@@ -1,3 +1,15 @@
 .hidden {
   display: none;
 }
+
+label {
+  padding: 5px;
+}
+
+input {
+  margin: 5px;
+}
+
+.checkbox {
+  margin-right: 5px;
+}

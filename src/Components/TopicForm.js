@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import '../Styles/TopicForm.css'
 import TopicCheckBox from './TopicCheckBox'
+import '../Styles/TopicForm.css'
 
 function TopicForm({ topicState, breaks, newUser, visible }) {
   const subbedTopics = topicState.subs

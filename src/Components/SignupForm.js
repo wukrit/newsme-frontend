@@ -87,7 +87,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
             />
           </div>
           <progress
-            class='progress is-primary'
+            className='progress is-primary'
             value={state.step - 1}
             max='4'
           />
