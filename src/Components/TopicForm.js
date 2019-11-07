@@ -11,6 +11,7 @@ function TopicForm({ topicState, breaks, newUser, visible }) {
   return topicState.topics.map(topic => {
     return (
       <TopicCheckBox
+        key={topic.id}
         topic={topic}
         breaks={breaks}
         newUser={newUser}

@@ -18,9 +18,15 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
     if (state.step < 4) {
       dispatch({ type: 'NEXT_STEP' })
     } else {
-
+      const subs = []
+      const form = event.target
+      for (let i = 0; i < form.elements.length; i++) {
+        if (form.elements[i].type === 'checkbox') {
+          subs.push([form.elements[i].name, form.elements[i].checked])
+        }
+      }
       const { email, name, password } = state
-      signup({ email, name, password })
+      signup({ email, name, password, subs })
     }
   }
 
