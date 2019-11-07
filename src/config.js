@@ -1,2 +1,2 @@
-export const apiUrl = 'https://newsme-backend.herokuapp.com/'
+export const apiUrl = 'https://localhost:3000'
 
