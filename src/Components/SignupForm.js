@@ -18,6 +18,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
     if (state.step < 4) {
       dispatch({ type: 'NEXT_STEP' })
     } else {
+
       const { email, name, password } = state
       signup({ email, name, password })
     }
@@ -85,7 +86,11 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
               value={state.step === 3 ? 'Create Account' : 'Continue'}
             />
           </div>
-          <progress class='progress is-primary' value={state.step - 1} max='4' />
+          <progress
+            class='progress is-primary'
+            value={state.step - 1}
+            max='4'
+          />
         </form>
       </div>
     </div>

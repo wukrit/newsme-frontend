@@ -68,29 +68,6 @@ function Edit({
     </form>
   )
 
-  const renderTopics = () => {
-    const subbed_topics = topicState.subs.map(sub => sub.topic_id)
-    return topicState.topics.map(topic => {
-      return subbed_topics.includes(topic.id) ? (
-        <Fragment key={`${topic.id}-label`}>
-          <label className='checkbox'>
-            <input type='checkbox' name={topic.title} defaultChecked />
-            {topic.title}
-          </label>
-          <br />
-        </Fragment>
-      ) : (
-        <Fragment key={`${topic.id}-label`}>
-          <label className='checkbox'>
-            <input type='checkbox' name={topic.title} />
-            {topic.title}
-          </label>
-          <br />
-        </Fragment>
-      )
-    })
-  }
-
   return (
     <>
       <div className='container is-widescreen'>

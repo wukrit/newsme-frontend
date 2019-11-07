@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 function NavBar({userState, dispatch}) {
   const handleLogOut = () => {
     dispatch({type: 'CLEAR_USER'})
+    dispatch({type: 'CLEAR_SUBS'})
   }
 
   return (
