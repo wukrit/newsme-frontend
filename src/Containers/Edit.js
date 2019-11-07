@@ -2,7 +2,7 @@ import React, { useEffect, Fragment } from 'react'
 import { connect } from 'react-redux'
 import TopicActions from '../Redux/Actions/topicActions'
 import UserActions from '../Redux/Actions/userActions'
-import { NavBar } from '../Components'
+import { NavBar, TopicForm } from '../Components'
 
 function Edit({
   userState,
@@ -57,7 +57,7 @@ function Edit({
       <label className='label'>Password:</label>
       <input className='input' name='password' type='password' />
       <label className='label'>Edit Your Subscriptions:</label>
-      {topicState.topics && topicState.subs ? renderTopics() : null}
+      {topicState.topics && topicState.subs ? <TopicForm breaks="true" /> : null}
       <br />
       <input className='button is-link' type='submit' value='Submit Changes' />
       <br />

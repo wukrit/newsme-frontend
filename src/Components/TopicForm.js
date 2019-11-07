@@ -1,16 +1,16 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 
-function TopicForm({ topicState, breaks, newUser }) {
+function TopicForm({ topicState, breaks, newUser, visible }) {
   if (newUser) {
     return topicState.topics.map(topic => {
       return (
         <Fragment key={`${topic.id}-label`}>
-          <label className='checkbox'>
-            <input type='checkbox' name={topic.title} />
+          <label className={visible}>
+            <input type={visible} name={topic.title} />
             {topic.title}
           </label>
-          {breaks === true ? <br /> : null}
+          {breaks ? <br /> : null}
         </Fragment>
       )
     })
@@ -23,7 +23,7 @@ function TopicForm({ topicState, breaks, newUser }) {
             <input type='checkbox' name={topic.title} defaultChecked />
             {topic.title}
           </label>
-          {breaks === true ? <br /> : null}
+          {breaks ? <br /> : null}
         </Fragment>
       ) : (
         <Fragment key={`${topic.id}-label`}>
@@ -31,7 +31,7 @@ function TopicForm({ topicState, breaks, newUser }) {
             <input type='checkbox' name={topic.title} />
             {topic.title}
           </label>
-          {breaks === true ? <br /> : null}
+          {breaks ? <br /> : null}
         </Fragment>
       )
     })
