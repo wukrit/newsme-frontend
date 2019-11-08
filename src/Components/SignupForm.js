@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import SignupActions from '../Redux/Actions/signupActions'
 import TopicActions from '../Redux/Actions/topicActions'
 import { TopicForm } from '../Components'
+import { apiUrl } from '../config'
 import '../Styles/SignupForm.css'
-import { stat } from 'fs'
 
 function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
   useEffect(() => {
@@ -18,18 +18,45 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
     event.target.classList.toggle('is-primary')
   }
 
+  const checkEmail = (email) => {
+    fetch(`${apiUrl}/users/check_email`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({email: email})
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (result.available === false) {
+        inputRef.current.setCustomValidity("That email is already in use.")
+        inputRef.current.reportValidity()
+        inputRef.current.setCustomValidity('')
+      } else {
+        nextStep()
+      }
+    })
+  }
+
+  const nextStep = () => {
+    labelRef.current.classList.remove('fadeIn')
+    inputRef.current.classList.remove('fadeIn')
+    labelRef.current.classList.add('fadeOut')
+    inputRef.current.classList.add('fadeOut')
+    setTimeout(() => {
+      labelRef.current.classList.remove('fadeOut')
+      inputRef.current.classList.remove('fadeOut')
+      dispatch({ type: 'NEXT_STEP' })
+    }, 500)
+  }
+
   const handleSubmit = event => {
     event.preventDefault()
-    if (state.step < 4) {
-      labelRef.current.classList.remove('fadeIn')
-      inputRef.current.classList.remove('fadeIn')
-      labelRef.current.classList.add('fadeOut')
-      inputRef.current.classList.add('fadeOut')
-      setTimeout(() => {
-        labelRef.current.classList.remove('fadeOut')
-        inputRef.current.classList.remove('fadeOut')
-        dispatch({ type: 'NEXT_STEP' })
-      }, 500)
+    if (state.step === 1) {
+      console.log(inputRef.current.validity, inputRef.current.customError)
+      checkEmail(state.email)
+    } else if (state.step < 4) {
+      nextStep()
     } else {
       const subs = []
       const form = event.target
