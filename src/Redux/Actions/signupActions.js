@@ -26,21 +26,8 @@ const signup = dispatch => userObj => {
     })
 }
 
-const checkEmail = dispatch => (email) => {
-  fetch(`${apiUrl}/users/check_email`, {
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({email: email})
-  })
-  .then(response => response.json())
-  .then(email => !email.available ? dispatch({type: 'INVALID_EMAIL'}) : null)
-}
-
 export default {
   setEmail,
   setPassword,
   signup,
-  checkEmail
 }
