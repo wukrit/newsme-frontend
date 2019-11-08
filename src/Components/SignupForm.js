@@ -83,6 +83,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
             onBlur={handleFocus}
             onChange={event => handleInput(event, 'EMAIL')}
             value={state.email}
+            required
           />
           <label
             className={
@@ -106,6 +107,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
             onBlur={handleFocus}
             onChange={event => handleInput(event, 'NAME')}
             value={state.name}
+            required
           />
           <label
             className={
@@ -129,6 +131,9 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
             onBlur={handleFocus}
             onChange={event => handleInput(event, 'PASSWORD')}
             value={state.password}
+            minLength='6'
+            maxLength='15'
+            required
           />
           <label
             className={
