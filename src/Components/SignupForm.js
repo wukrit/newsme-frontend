@@ -53,7 +53,6 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
   const handleSubmit = event => {
     event.preventDefault()
     if (state.step === 1) {
-      console.log(inputRef.current.validity, inputRef.current.customError)
       checkEmail(state.email)
     } else if (state.step < 4) {
       nextStep()
