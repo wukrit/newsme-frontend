@@ -1,22 +1,61 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import SignupActions from '../Redux/Actions/signupActions'
 import TopicActions from '../Redux/Actions/topicActions'
 import { TopicForm } from '../Components'
+import { apiUrl } from '../config'
+import '../Styles/SignupForm.css'
 
 function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
   useEffect(() => {
     getTopics()
   }, [getTopics])
 
+  const inputRef = useRef(null)
+  const labelRef = useRef(null)
+
   const handleFocus = event => {
     event.target.classList.toggle('is-primary')
   }
 
+  const checkEmail = (email) => {
+    fetch(`${apiUrl}/users/check_email`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({email: email})
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (result.available === false) {
+        inputRef.current.setCustomValidity("That email is already in use.")
+        inputRef.current.reportValidity()
+        inputRef.current.setCustomValidity('')
+      } else {
+        nextStep()
+      }
+    })
+  }
+
+  const nextStep = () => {
+    labelRef.current.classList.remove('fadeIn')
+    inputRef.current.classList.remove('fadeIn')
+    labelRef.current.classList.add('fadeOut')
+    inputRef.current.classList.add('fadeOut')
+    setTimeout(() => {
+      labelRef.current.classList.remove('fadeOut')
+      inputRef.current.classList.remove('fadeOut')
+      dispatch({ type: 'NEXT_STEP' })
+    }, 500)
+  }
+
   const handleSubmit = event => {
     event.preventDefault()
-    if (state.step < 4) {
-      dispatch({ type: 'NEXT_STEP' })
+    if (state.step === 1) {
+      checkEmail(state.email)
+    } else if (state.step < 4) {
+      nextStep()
     } else {
       const subs = []
       const form = event.target
@@ -52,8 +91,17 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
     <div className='columns is-desktop'>
       <div className='column is-one-third is-offset-one-third is-desktop'>
         <form className='control' onSubmit={event => handleSubmit(event)}>
+          <label
+            className={
+              handleSteps(1) !== 'hidden' ? 'animated label' : 'hidden'
+            }
+            ref={handleSteps(1) !== 'hidden' ? labelRef : undefined}
+          >
+            Email
+          </label>
           <input
-            className='input'
+            className='input animated'
+            ref={handleSteps(1) !== 'hidden' ? inputRef : undefined}
             type={handleSteps(1)}
             name='email'
             placeholder='Enter Your Email'
@@ -61,9 +109,23 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
             onBlur={handleFocus}
             onChange={event => handleInput(event, 'EMAIL')}
             value={state.email}
+            required
           />
+          <label
+            className={
+              handleSteps(2) !== 'hidden'
+                ? 'label animated fadeIn label-color-white'
+                : 'hidden'
+            }
+            ref={handleSteps(2) !== 'hidden' ? labelRef : undefined}
+          >
+            Name
+          </label>
           <input
-            className='input'
+            className={`input ${
+              handleSteps(2) !== 'hidden' ? 'animated fadeIn' : null
+            }`}
+            ref={handleSteps(2) !== 'hidden' ? inputRef : undefined}
             type={handleSteps(2)}
             name='name'
             placeholder='Enter Your First Name'
@@ -71,9 +133,23 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
             onBlur={handleFocus}
             onChange={event => handleInput(event, 'NAME')}
             value={state.name}
+            required
           />
+          <label
+            className={
+              handleSteps(3) !== 'hidden'
+                ? 'label animated fadeIn label-color-white'
+                : 'hidden'
+            }
+            ref={handleSteps(3) !== 'hidden' ? labelRef : undefined}
+          >
+            Password
+          </label>
           <input
-            className='input'
+            className={`input ${
+              handleSteps(3) !== 'hidden' ? 'animated fadeIn' : null
+            }`}
+            ref={handleSteps(3) !== 'hidden' ? inputRef : undefined}
             type={handleSteps(3)}
             name='password'
             placeholder='Enter a Secure Password'
@@ -81,10 +157,27 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
             onBlur={handleFocus}
             onChange={event => handleInput(event, 'PASSWORD')}
             value={state.password}
+            minLength='6'
+            maxLength='15'
+            required
           />
-          {topicState.topics ? (
-            <TopicForm newUser={true} visible={handleSteps(4)} />
-          ) : null}
+          <label
+            className={
+              handleSteps(4) !== 'hidden'
+                ? 'label animated fadeIn label-color-white'
+                : 'hidden'
+            }
+            ref={handleSteps(4) !== 'hidden' ? labelRef : undefined}
+          >
+            Topics
+          </label>
+          <div
+            className={handleSteps(4) !== 'hidden' ? 'animated fadeIn' : null}
+          >
+            {topicState.topics ? (
+              <TopicForm newUser={true} visible={handleSteps(4)} />
+            ) : null}
+          </div>
           <div className='column is-2 is-offset-4 is-desktop'>
             <input
               className='button is-link'
@@ -93,7 +186,9 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
             />
           </div>
           <progress
-            className='progress is-primary'
+            className={
+              state.step > 1 ? 'progress is-primary animated fadeIn' : 'hidden'
+            }
             value={state.step - 1}
             max='4'
           />

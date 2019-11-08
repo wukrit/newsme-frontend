@@ -2,7 +2,8 @@ const initialState = {
   email: '',
   password: '',
   name: '',
-  step: 1
+  step: 1,
+  validEmail: true
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -15,6 +16,8 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, name: payload }
     case 'NEXT_STEP':
       return { ...state, step: state.step + 1}
+    case 'INVALID_EMAIL':
+      return { ...state, validEmail: false }
     case 'SIGNUP':
       return { email: '', password: '', name: '', step: 1 }
     default:
