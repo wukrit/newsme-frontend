@@ -11,18 +11,15 @@ function NavBar({userState, dispatch}) {
   return (
     <nav className='navbar is-link'>
       <div className='navbar-menu'>
-        <div className='navbar-start'>
-          <NavLink className='navbar-item' to='/feed'>
-            Newsfeed
-          </NavLink>
-          <NavLink className='navbar-item' to='/edit'>
-            Edit Profile
-          </NavLink>
+        <div className='navbar-brand'>
+        <NavLink className='navbar-item' to='/feed'>
+          <span className='title brand'>NewsMe</span>
+        </NavLink>
         </div>
         <div className='navbar-end'>
-          <div className='navbar-item'>
-            Logged in as: {userState.user.email}
-          </div>
+          <NavLink className='navbar-item' to='/edit'>
+          Logged in as: {userState.user.email}
+          </NavLink>
           <div className='navbar-item'>
             <button className='button is-danger' onClick={handleLogOut}>Log Out</button>
           </div>

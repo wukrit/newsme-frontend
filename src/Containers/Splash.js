@@ -9,6 +9,7 @@ function Splash() {
         <HeroBody />
         <HeroFoot />
       </section>
+
     </>
   )
 }
