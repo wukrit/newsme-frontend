@@ -1,22 +1,23 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import UserActions from '../Redux/Actions/userActions'
 import SignupActions from '../Redux/Actions/signupActions'
 import { connect } from 'react-redux'
 
-function HeroNav({ state, login, setEmail, setPassword }) {
+function HeroNav({ user, state, login, setLoginEmail, setLoginPassword }) {
+
   const handleEmailChange = event => {
-    setEmail(event.target.value)
+    setLoginEmail(event.target.value)
   }
 
   const handlePasswordChange = event => {
-    setPassword(event.target.value)
+    setLoginPassword(event.target.value)
   }
 
   const handleSubmit = event => {
     event.preventDefault()
     const userObj = {
-      email: state.email,
-      password: state.password
+      email: state.loginEmail,
+      password: state.loginPassword
     }
     login(userObj)
     event.target.reset()
@@ -41,7 +42,7 @@ function HeroNav({ state, login, setEmail, setPassword }) {
                 type='email'
                 placeholder='Email'
                 onChange={event => handleEmailChange(event)}
-                value={state.email_draft}
+                value={state.loginEmail}
               />
               <input
                 className='input is-small'
@@ -49,7 +50,7 @@ function HeroNav({ state, login, setEmail, setPassword }) {
                 type='password'
                 placeholder='Password'
                 onChange={event => handlePasswordChange(event)}
-                value={state.password_draft}
+                value={state.loginPassword}
               />
               <input
                 className='button is-small is-link'
@@ -68,8 +69,8 @@ const mapStateToProps = state => ({ state: state.signup, user: state.user })
 
 const mapDispatchToProps = {
   login: UserActions.login,
-  setEmail: SignupActions.setEmail,
-  setPassword: SignupActions.setPassword
+  setLoginEmail: SignupActions.setLoginEmail,
+  setLoginPassword: SignupActions.setLoginPassword
 }
 
 export default connect(

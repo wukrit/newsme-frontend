@@ -10,6 +10,7 @@ const login = userObj => dispatch => {
   })
     .then(response => response.json())
     .then(user => {
+      dispatch({ type: 'SIGNUP' })
       dispatch({ type: 'SET_USER', payload: user })
     })
 }

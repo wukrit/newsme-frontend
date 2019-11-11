@@ -5,6 +5,16 @@ const setEmail = payload => ({
   payload
 })
 
+const setLoginEmail = payload => ({
+  type: 'SET_LOGIN_EMAIL',
+  payload
+})
+
+const setLoginPassword = payload => ({
+  type: 'SET_LOGIN_PASSWORD',
+  payload
+})
+
 const setPassword = payload => ({
   type: 'SET_PASSWORD',
   payload
@@ -28,6 +38,8 @@ const signup = dispatch => userObj => {
 
 export default {
   setEmail,
+  setLoginEmail,
   setPassword,
+  setLoginPassword,
   signup,
 }
