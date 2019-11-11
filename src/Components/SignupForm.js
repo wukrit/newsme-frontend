@@ -93,7 +93,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
         <form className='control' onSubmit={event => handleSubmit(event)}>
           <label
             className={
-              handleSteps(1) !== 'hidden' ? 'animated label' : 'hidden'
+              handleSteps(1) !== 'hidden' ? 'animated label is-white' : 'hidden'
             }
             ref={handleSteps(1) !== 'hidden' ? labelRef : undefined}
           >
@@ -114,7 +114,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
           <label
             className={
               handleSteps(2) !== 'hidden'
-                ? 'label animated fadeIn label-color-white'
+                ? 'label animated fadeIn is-white'
                 : 'hidden'
             }
             ref={handleSteps(2) !== 'hidden' ? labelRef : undefined}
@@ -138,7 +138,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
           <label
             className={
               handleSteps(3) !== 'hidden'
-                ? 'label animated fadeIn label-color-white'
+                ? 'label animated fadeIn is-white'
                 : 'hidden'
             }
             ref={handleSteps(3) !== 'hidden' ? labelRef : undefined}
@@ -164,7 +164,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
           <label
             className={
               handleSteps(4) !== 'hidden'
-                ? 'label animated fadeIn label-color-white'
+                ? 'label animated fadeIn is-white'
                 : 'hidden'
             }
             ref={handleSteps(4) !== 'hidden' ? labelRef : undefined}
