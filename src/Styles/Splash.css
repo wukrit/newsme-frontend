@@ -1,6 +1,5 @@
 .hero {
   background-image: url('hero-banner.png');
-  /* background-size: stretch; */
   background-size: cover;
 }
 
