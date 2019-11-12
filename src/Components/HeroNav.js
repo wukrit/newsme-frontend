@@ -29,7 +29,7 @@ function HeroNav({ user, state, login, setLoginEmail, setLoginPassword }) {
       <nav className='navbar'>
         <div className='container'>
           <div className='navbar-brand'>
-            <span className='title'>NewsMe</span>
+            <span className='title is-blue'>NewsMe</span>
           </div>
           <div className='navbar-end is-hidden-touch'>
             <form

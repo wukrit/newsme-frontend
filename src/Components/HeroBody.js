@@ -5,12 +5,14 @@ function HeroBody() {
   return (
     <div className='hero-body'>
       <div className='container has-text-centered'>
-        <p className='title'>
-          An AI Enhanced <br /> News Experience
-        </p>
-        <p className='subtitle'>
-          Get tailored news sent straight <br /> to your inbox every morning
-        </p>
+        <div className='main-box'>
+          <p className='title is-blue'>
+            An AI Enhanced <br /> News Experience
+          </p>
+          <p className='subtitle is-blue'>
+            Get tailored news sent straight <br /> to your inbox every morning
+          </p>
+        </div>
         <SignupForm />
       </div>
     </div>
