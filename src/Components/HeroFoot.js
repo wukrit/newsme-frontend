@@ -6,6 +6,7 @@ function HeroFoot() {
       <div className='container has-text-centered'>
       <i className="fas fa-angle-double-down fa-lg"></i>
       </div>
+      <br />
     </div>
   )
 }
