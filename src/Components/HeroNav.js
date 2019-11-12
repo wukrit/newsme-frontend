@@ -2,6 +2,7 @@ import React from 'react'
 import UserActions from '../Redux/Actions/userActions'
 import SignupActions from '../Redux/Actions/signupActions'
 import { connect } from 'react-redux'
+import { MobileNav } from '../Components'
 
 function HeroNav({ state, login, setLoginEmail, setLoginPassword }) {
   const handleEmailChange = event => {
@@ -28,13 +29,13 @@ function HeroNav({ state, login, setLoginEmail, setLoginPassword }) {
       <nav className='navbar'>
         <div className='container'>
           <div className='navbar-brand'>
+          <a href='/'>
             <span className='title is-blue'>
               {' '}
               <i className='fas fa-newspaper'></i> NewsMe
             </span>
-            <div className='mobile-menu is-hidden-desktop'>
-              <i className='fas fa-bars fa-2x burger'></i>
-            </div>
+            </a>
+            <MobileNav />
           </div>
           <div className='navbar-end is-hidden-touch'>
             <form

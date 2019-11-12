@@ -176,7 +176,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
         <input
           className='button is-link submit-btn'
           type='submit'
-          value={state.step === 3 ? 'Create Account' : 'Continue'}
+          value={state.step === 4 ? 'Create Account' : 'Continue'}
         />
         <progress
           className={
