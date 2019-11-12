@@ -18,7 +18,7 @@ function NavBar({userState, dispatch}) {
         </div>
         <div className='navbar-end'>
           <NavLink className='navbar-item' to='/edit'>
-          Logged in as: {userState.user.email}
+            <span><i class="fas fa-user fa-lg"></i>  {userState.user.email}</span>
           </NavLink>
           <div className='navbar-item'>
             <button className='button is-danger' onClick={handleLogOut}>Log Out</button>
