@@ -18,24 +18,24 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
     event.target.classList.toggle('is-link')
   }
 
-  const checkEmail = (email) => {
+  const checkEmail = email => {
     fetch(`${apiUrl}/users/check_email`, {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({email: email})
+      body: JSON.stringify({ email: email })
     })
-    .then(response => response.json())
-    .then(result => {
-      if (result.available === false) {
-        inputRef.current.setCustomValidity("That email is already in use.")
-        inputRef.current.reportValidity()
-        inputRef.current.setCustomValidity('')
-      } else {
-        nextStep()
-      }
-    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.available === false) {
+          inputRef.current.setCustomValidity('That email is already in use.')
+          inputRef.current.reportValidity()
+          inputRef.current.setCustomValidity('')
+        } else {
+          nextStep()
+        }
+      })
   }
 
   const nextStep = () => {
@@ -88,109 +88,105 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
   }
 
   return (
-      <div className='signup-div'>
-        <form className='control signup' onSubmit={event => handleSubmit(event)}>
-          <label
-            className={
-              handleSteps(1) !== 'hidden' ? 'animated label is-white' : 'hidden'
-            }
-            ref={handleSteps(1) !== 'hidden' ? labelRef : undefined}
-          >
-            Email
-          </label>
-          <input
-            className='input animated'
-            ref={handleSteps(1) !== 'hidden' ? inputRef : undefined}
-            type={handleSteps(1)}
-            name='email'
-            placeholder='Enter Your Email'
-            onFocus={handleFocus}
-            onBlur={handleFocus}
-            onChange={event => handleInput(event, 'EMAIL')}
-            value={state.email}
-            required
-          />
-          <label
-            className={
-              handleSteps(2) !== 'hidden'
-                ? 'label animated fadeIn is-white'
-                : 'hidden'
-            }
-            ref={handleSteps(2) !== 'hidden' ? labelRef : undefined}
-          >
-            Name
-          </label>
-          <input
-            className={`input ${
-              handleSteps(2) !== 'hidden' ? 'animated fadeIn' : null
-            }`}
-            ref={handleSteps(2) !== 'hidden' ? inputRef : undefined}
-            type={handleSteps(2)}
-            name='name'
-            placeholder='Enter Your First Name'
-            onFocus={handleFocus}
-            onBlur={handleFocus}
-            onChange={event => handleInput(event, 'NAME')}
-            value={state.name}
-            required
-          />
-          <label
-            className={
-              handleSteps(3) !== 'hidden'
-                ? 'label animated fadeIn is-white'
-                : 'hidden'
-            }
-            ref={handleSteps(3) !== 'hidden' ? labelRef : undefined}
-          >
-            Password
-          </label>
-          <input
-            className={`input ${
-              handleSteps(3) !== 'hidden' ? 'animated fadeIn' : null
-            }`}
-            ref={handleSteps(3) !== 'hidden' ? inputRef : undefined}
-            type={handleSteps(3)}
-            name='password'
-            placeholder='Enter a Secure Password'
-            onFocus={handleFocus}
-            onBlur={handleFocus}
-            onChange={event => handleInput(event, 'PASSWORD')}
-            value={state.password}
-            minLength='6'
-            maxLength='15'
-            required
-          />
-          <label
-            className={
-              handleSteps(4) !== 'hidden'
-                ? 'animated fadeIn is-white'
-                : 'hidden'
-            }
-            ref={handleSteps(4) !== 'hidden' ? labelRef : undefined}
-          >
-            What Topics Do You Want to Subscribe to?
-          </label>
-          <div
-            className={handleSteps(4) !== 'hidden' ? 'animated fadeIn' : null}
-          >
-            {topicState.topics ? (
-              <TopicForm newUser={true} visible={handleSteps(4)} />
-            ) : null}
-          </div>
-            <input
-              className='button is-link submit-btn'
-              type='submit'
-              value={state.step === 3 ? 'Create Account' : 'Continue'}
-            />
-          <progress
-            className={
-              state.step > 1 ? 'progress is-link animated fadeIn' : 'hidden'
-            }
-            value={state.step - 1}
-            max='4'
-          />
-        </form>
-      </div>
+    <div className='signup-div'>
+      <form className='control signup' onSubmit={event => handleSubmit(event)}>
+        <label
+          className={
+            handleSteps(1) !== 'hidden' ? 'animated label is-white' : 'hidden'
+          }
+          ref={handleSteps(1) !== 'hidden' ? labelRef : undefined}
+        >
+          Email
+        </label>
+        <input
+          className='input animated'
+          ref={handleSteps(1) !== 'hidden' ? inputRef : undefined}
+          type={handleSteps(1)}
+          name='email'
+          placeholder='Enter Your Email'
+          onFocus={handleFocus}
+          onBlur={handleFocus}
+          onChange={event => handleInput(event, 'EMAIL')}
+          value={state.email}
+          required
+        />
+        <label
+          className={
+            handleSteps(2) !== 'hidden'
+              ? 'label animated fadeIn is-white'
+              : 'hidden'
+          }
+          ref={handleSteps(2) !== 'hidden' ? labelRef : undefined}
+        >
+          Name
+        </label>
+        <input
+          className={`input ${
+            handleSteps(2) !== 'hidden' ? 'animated fadeIn' : null
+          }`}
+          ref={handleSteps(2) !== 'hidden' ? inputRef : undefined}
+          type={handleSteps(2)}
+          name='name'
+          placeholder='Enter Your First Name'
+          onFocus={handleFocus}
+          onBlur={handleFocus}
+          onChange={event => handleInput(event, 'NAME')}
+          value={state.name}
+          required
+        />
+        <label
+          className={
+            handleSteps(3) !== 'hidden'
+              ? 'label animated fadeIn is-white'
+              : 'hidden'
+          }
+          ref={handleSteps(3) !== 'hidden' ? labelRef : undefined}
+        >
+          Password
+        </label>
+        <input
+          className={`input ${
+            handleSteps(3) !== 'hidden' ? 'animated fadeIn' : null
+          }`}
+          ref={handleSteps(3) !== 'hidden' ? inputRef : undefined}
+          type={handleSteps(3)}
+          name='password'
+          placeholder='Enter a Secure Password'
+          onFocus={handleFocus}
+          onBlur={handleFocus}
+          onChange={event => handleInput(event, 'PASSWORD')}
+          value={state.password}
+          minLength='6'
+          maxLength='15'
+          required
+        />
+        <label
+          className={
+            handleSteps(4) !== 'hidden' ? 'animated fadeIn is-white' : 'hidden'
+          }
+          ref={handleSteps(4) !== 'hidden' ? labelRef : undefined}
+        >
+          What Topics Do You Want to Subscribe to?
+        </label>
+        <div className={handleSteps(4) !== 'hidden' ? 'animated fadeIn' : null}>
+          {topicState.topics ? (
+            <TopicForm newUser={true} visible={handleSteps(4)} />
+          ) : null}
+        </div>
+        <input
+          className='button is-link submit-btn'
+          type='submit'
+          value={state.step === 3 ? 'Create Account' : 'Continue'}
+        />
+        <progress
+          className={
+            state.step > 1 ? 'progress is-link animated fadeIn' : 'hidden'
+          }
+          value={state.step - 1}
+          max='4'
+        />
+      </form>
+    </div>
   )
 }
 
@@ -203,7 +199,4 @@ const mapDispatchToProps = dispatch => ({
   signup: dispatch(SignupActions.signup),
   getTopics: dispatch(TopicActions.getAllTopics)
 })
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignupForm)
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm)

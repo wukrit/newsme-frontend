@@ -4,7 +4,6 @@ import SignupActions from '../Redux/Actions/signupActions'
 import { connect } from 'react-redux'
 
 function HeroNav({ state, login, setLoginEmail, setLoginPassword }) {
-
   const handleEmailChange = event => {
     setLoginEmail(event.target.value)
   }
@@ -29,9 +28,12 @@ function HeroNav({ state, login, setLoginEmail, setLoginPassword }) {
       <nav className='navbar'>
         <div className='container'>
           <div className='navbar-brand'>
-            <span className='title is-blue'> <i className="fas fa-newspaper"></i> NewsMe</span>
+            <span className='title is-blue'>
+              {' '}
+              <i className='fas fa-newspaper'></i> NewsMe
+            </span>
             <div className='mobile-menu is-hidden-desktop'>
-              <i className="fas fa-bars fa-2x burger"></i>
+              <i className='fas fa-bars fa-2x burger'></i>
             </div>
           </div>
           <div className='navbar-end is-hidden-touch'>
@@ -76,7 +78,4 @@ const mapDispatchToProps = {
   setLoginPassword: SignupActions.setLoginPassword
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HeroNav)
+export default connect(mapStateToProps, mapDispatchToProps)(HeroNav)
