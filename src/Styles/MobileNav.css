@@ -41,3 +41,7 @@
 .open {
   width: 100%;
 }
+
+.mobile {
+  max-width: 95%;
+}
