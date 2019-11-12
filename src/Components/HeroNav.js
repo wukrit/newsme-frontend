@@ -30,6 +30,9 @@ function HeroNav({ state, login, setLoginEmail, setLoginPassword }) {
         <div className='container'>
           <div className='navbar-brand'>
             <span className='title is-blue'> <i className="fas fa-newspaper"></i> NewsMe</span>
+            <div className='mobile-menu is-hidden-desktop'>
+              <i className="fas fa-bars fa-2x burger"></i>
+            </div>
           </div>
           <div className='navbar-end is-hidden-touch'>
             <form

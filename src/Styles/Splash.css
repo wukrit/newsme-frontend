@@ -19,3 +19,17 @@ label {
   text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
   color: black;
 }
+
+.navbar-brand {
+  justify-content: space-between;
+}
+
+.burger {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+@media only screen and (max-width: 1023px) {
+  .navbar-brand {
+    padding: 5px;
+  }
+}
