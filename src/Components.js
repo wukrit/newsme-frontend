@@ -8,6 +8,7 @@ import Article from './Components/Article'
 import NavBar from './Components/NavBar'
 import TopicForm from './Components/TopicForm'
 import Footer from './Components/Footer'
+import MobileNav from './Components/MobileNav'
 
 export {
     HeroNav,
@@ -19,5 +20,6 @@ export {
     Article,
     NavBar,
     TopicForm,
-    Footer
+    Footer,
+    MobileNav
 }
