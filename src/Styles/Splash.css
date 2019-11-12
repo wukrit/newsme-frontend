@@ -1,5 +1,6 @@
 .hero {
   background-image: url('hero-banner.png');
+  /* background-size: stretch; */
   background-size: cover;
 }
 
@@ -19,7 +20,7 @@
   font-weight: 700;
 }
 
-.checkbox:hover {
+.signup-div .checkbox:hover {
   text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
   color: black;
 }
@@ -36,4 +37,9 @@
   .navbar-brand {
     padding: 5px;
   }
+}
+
+.column-title {
+  font-weight: 800;
+  text-align: center;
 }

@@ -1,3 +1,10 @@
 .footer a {
   color: #4a4a4a;
 }
+
+.footer {
+  background-color: #f7f7f7;
+  font-size: small;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}

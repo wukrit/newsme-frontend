@@ -47,6 +47,9 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
       labelRef.current.classList.remove('fadeOut')
       inputRef.current.classList.remove('fadeOut')
       dispatch({ type: 'NEXT_STEP' })
+      if (inputRef.current !== null) {
+        inputRef.current.focus()
+      }
     }, 500)
   }
 

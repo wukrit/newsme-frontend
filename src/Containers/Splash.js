@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeroNav, HeroBody, HeroFoot, Footer } from '../Components'
+import { HeroNav, HeroBody, HeroFoot, Footer, SplashBody } from '../Components'
 import '../Styles/Splash.css'
 
 function Splash() {
@@ -11,6 +11,7 @@ function Splash() {
         <HeroFoot />
       </section>
       <br />
+      <SplashBody />
       <Footer />
     </>
   )
