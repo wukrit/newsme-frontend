@@ -88,7 +88,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
   }
 
   return (
-    <div className='columns is-desktop'>
+    <div className='columns is-desktop has-text-centered'>
       <div className='column is-one-third is-offset-one-third is-desktop'>
         <form className='control' onSubmit={event => handleSubmit(event)}>
           <label
@@ -187,7 +187,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
           </div>
           <progress
             className={
-              state.step > 1 ? 'progress is-primary animated fadeIn' : 'hidden'
+              state.step > 1 ? 'progress is-link animated fadeIn' : 'hidden'
             }
             value={state.step - 1}
             max='4'

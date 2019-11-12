@@ -4,7 +4,7 @@ function HeroFoot() {
   return (
     <div className='hero-foot'>
       <div className='container has-text-centered'>
-        <p className='title'>v</p>
+      <i class="fas fa-angle-double-down fa-lg"></i>
       </div>
     </div>
   )
