@@ -42,7 +42,7 @@ function MobileNav({ state, login, setLoginEmail, setLoginPassword }) {
               onSubmit={event => handleSubmit(event)}
             >
               <input
-                className='input is-small'
+                className='input is-large'
                 name='email'
                 type='email'
                 placeholder='Email'
@@ -50,7 +50,7 @@ function MobileNav({ state, login, setLoginEmail, setLoginPassword }) {
                 value={state.loginEmail}
               />
               <input
-                className='input is-small'
+                className='input is-large'
                 name='password'
                 type='password'
                 placeholder='Password'
@@ -58,7 +58,7 @@ function MobileNav({ state, login, setLoginEmail, setLoginPassword }) {
                 value={state.loginPassword}
               />
               <input
-                className='button is-small is-link'
+                className='button is-large is-link'
                 type='submit'
                 value='Login'
               />
