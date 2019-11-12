@@ -29,11 +29,11 @@ function HeroNav({ state, login, setLoginEmail, setLoginPassword }) {
       <nav className='navbar'>
         <div className='container'>
           <div className='navbar-brand'>
-          <a href='/'>
-            <span className='title is-blue'>
-              {' '}
-              <i className='fas fa-newspaper'></i> NewsMe
-            </span>
+            <a href='/'>
+              <span className='title is-blue'>
+                {' '}
+                <i className='fas fa-newspaper'></i> NewsMe
+              </span>
             </a>
             <MobileNav />
           </div>

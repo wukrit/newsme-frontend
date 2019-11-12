@@ -36,33 +36,35 @@ function MobileNav({ state, login, setLoginEmail, setLoginPassword }) {
         <i className='fas fa-bars fa-2x burger'></i>
       </div>
       <div ref={menuRef} className='sidenav'>
-        <li onClick={handleToggleMenu}><i className="fas fa-times closebtn"></i></li>
+        <li onClick={handleToggleMenu}>
+          <i className='fas fa-times closebtn'></i>
+        </li>
         <form
-              className='field is-horizontal mobile'
-              onSubmit={event => handleSubmit(event)}
-            >
-              <input
-                className='input is-large'
-                name='email'
-                type='email'
-                placeholder='Email'
-                onChange={event => handleEmailChange(event)}
-                value={state.loginEmail}
-              />
-              <input
-                className='input is-large'
-                name='password'
-                type='password'
-                placeholder='Password'
-                onChange={event => handlePasswordChange(event)}
-                value={state.loginPassword}
-              />
-              <input
-                className='button is-large is-link'
-                type='submit'
-                value='Login'
-              />
-            </form>
+          className='field is-horizontal mobile'
+          onSubmit={event => handleSubmit(event)}
+        >
+          <input
+            className='input is-large'
+            name='email'
+            type='email'
+            placeholder='Email'
+            onChange={event => handleEmailChange(event)}
+            value={state.loginEmail}
+          />
+          <input
+            className='input is-large'
+            name='password'
+            type='password'
+            placeholder='Password'
+            onChange={event => handlePasswordChange(event)}
+            value={state.loginPassword}
+          />
+          <input
+            className='button is-large is-link'
+            type='submit'
+            value='Login'
+          />
+        </form>
       </div>
     </>
   )
