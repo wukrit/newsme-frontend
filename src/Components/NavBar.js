@@ -13,7 +13,7 @@ function NavBar({userState, dispatch}) {
       <div className='navbar-menu'>
         <div className='navbar-brand'>
         <NavLink className='navbar-item' to='/feed'>
-          <span className='title brand'>NewsMe</span>
+          <span className='title brand'> <i class="fas fa-newspaper"></i> NewsMe</span>
         </NavLink>
         </div>
         <div className='navbar-end'>
