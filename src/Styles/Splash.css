@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .hero {
   background-image: url('hero-banner.png');
   /* background-size: stretch; */
@@ -42,8 +47,4 @@
 .column-title {
   font-weight: 800;
   text-align: center;
-}
-
-body {
-  /* overflow-x: hidden; */
 }
