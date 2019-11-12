@@ -15,7 +15,7 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
   const labelRef = useRef(null)
 
   const handleFocus = event => {
-    event.target.classList.toggle('is-primary')
+    event.target.classList.toggle('is-link')
   }
 
   const checkEmail = (email) => {
@@ -88,9 +88,8 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
   }
 
   return (
-    <div className='columns is-desktop has-text-centered'>
-      <div className='column is-one-third is-offset-one-third is-desktop'>
-        <form className='control' onSubmit={event => handleSubmit(event)}>
+      <div className='signup-div'>
+        <form className='control signup' onSubmit={event => handleSubmit(event)}>
           <label
             className={
               handleSteps(1) !== 'hidden' ? 'animated label is-white' : 'hidden'
@@ -164,12 +163,12 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
           <label
             className={
               handleSteps(4) !== 'hidden'
-                ? 'label animated fadeIn is-white'
+                ? 'animated fadeIn is-white'
                 : 'hidden'
             }
             ref={handleSteps(4) !== 'hidden' ? labelRef : undefined}
           >
-            Topics
+            What Topics Do You Want to Subscribe to?
           </label>
           <div
             className={handleSteps(4) !== 'hidden' ? 'animated fadeIn' : null}
@@ -178,13 +177,11 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
               <TopicForm newUser={true} visible={handleSteps(4)} />
             ) : null}
           </div>
-          <div className='column is-2 is-offset-4 is-desktop'>
             <input
-              className='button is-link'
+              className='button is-link submit-btn'
               type='submit'
               value={state.step === 3 ? 'Create Account' : 'Continue'}
             />
-          </div>
           <progress
             className={
               state.step > 1 ? 'progress is-link animated fadeIn' : 'hidden'
@@ -194,7 +191,6 @@ function SignupForm({ state, dispatch, signup, topicState, getTopics }) {
           />
         </form>
       </div>
-    </div>
   )
 }
 

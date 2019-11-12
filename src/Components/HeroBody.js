@@ -12,6 +12,7 @@ function HeroBody() {
           <p className='subtitle is-blue'>
             Get tailored news sent straight <br /> to your inbox every morning
           </p>
+          <br />
         </div>
         <SignupForm />
       </div>

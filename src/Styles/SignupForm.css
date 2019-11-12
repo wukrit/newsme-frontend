@@ -120,3 +120,26 @@
 .is-white {
   color: #fff;
 }
+
+.signup {
+    text-align: center;
+}
+
+.label {
+  text-align: left;
+  display: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .signup {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .signup {
+    max-width: 40%;
+  }
+}

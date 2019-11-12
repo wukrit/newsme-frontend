@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import UserActions from '../Redux/Actions/userActions'
 import SignupActions from '../Redux/Actions/signupActions'
 import { connect } from 'react-redux'
 
-function HeroNav({ user, state, login, setLoginEmail, setLoginPassword }) {
+function HeroNav({ state, login, setLoginEmail, setLoginPassword }) {
 
   const handleEmailChange = event => {
     setLoginEmail(event.target.value)
@@ -29,7 +29,7 @@ function HeroNav({ user, state, login, setLoginEmail, setLoginPassword }) {
       <nav className='navbar'>
         <div className='container'>
           <div className='navbar-brand'>
-            <span className='title is-blue'> <i class="fas fa-newspaper"></i> NewsMe</span>
+            <span className='title is-blue'> <i className="fas fa-newspaper"></i> NewsMe</span>
           </div>
           <div className='navbar-end is-hidden-touch'>
             <form

@@ -13,12 +13,12 @@ function NavBar({userState, dispatch}) {
       <div className='navbar-menu'>
         <div className='navbar-brand'>
         <NavLink className='navbar-item' to='/feed'>
-          <span className='title brand'> <i class="fas fa-newspaper"></i> NewsMe</span>
+          <span className='title brand'> <i className="fas fa-newspaper"></i> NewsMe</span>
         </NavLink>
         </div>
         <div className='navbar-end'>
           <NavLink className='navbar-item' to='/edit'>
-            <span><i class="fas fa-user fa-lg"></i>  {userState.user.email}</span>
+            <span><i className="fas fa-user fa-lg"></i>  {userState.user.email}</span>
           </NavLink>
           <div className='navbar-item'>
             <button className='button is-danger' onClick={handleLogOut}>Log Out</button>
