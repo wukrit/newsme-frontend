@@ -38,7 +38,23 @@
   }
 }
 
-.column-title {
+.section-title {
   font-weight: 800;
+  font-size: larger;
   text-align: center;
+}
+
+img {
+  max-height: 30vh;
+  align-self: center;
+  margin: 20px;
+}
+
+.img-div {
+  display: flex;
+  justify-content: center;
+}
+
+.section {
+  padding-bottom: 0;
 }

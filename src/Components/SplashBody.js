@@ -2,57 +2,64 @@ import React from 'react'
 
 function SplashBody() {
   return (
-    <section className='section'>
-      <div className='columns'>
-        <div className='column'>
-          <p className='column-title'>Some Title</p>
-          <p>
-            Lorem ipsum dolor amet waistcoat hexagon edison bulb farm-to-table
-            blue bottle shabby chic tacos. Tbh waistcoat portland, raclette yr
-            unicorn pitchfork austin ethical keffiyeh organic affogato. Beard
-            drinking vinegar leggings, disrupt try-hard 3 wolf moon hell of tofu
-            subway tile cray lyft farm-to-table mumblecore. Photo booth af kale
-            chips hammock bicycle rights hell of. Cray authentic fam mumblecore
-            XOXO succulents gochujang. Enamel pin waistcoat artisan readymade
-            vice af VHS plaid glossier keffiyeh selvage roof party actually.
-            Food truck everyday carry hell of, blog mlkshk humblebrag tumblr
-            church-key irony wolf.
-          </p>
+    <>
+      <section className='section'>
+        <p className='section-title'>No Need to Visit 100 Different Websites</p>
+        <br />
+        <div className='columns level'>
+          <div className='column has-text-centered'>
+            <p>
+              NewsMe gathers the top headlines from hundreds ofglobal sources so
+              you don't have to.
+            </p>
+          </div>
+          <div className='column img-div'>
+            <img
+              src='/sources.png'
+              alt='Examples of news sources include: Ars technica, Associated Press, Axios'
+            />
+          </div>
         </div>
-        <div className='column'>
-          <p className='column-title'>Some Title</p>
-          <p>
-            Distillery lumbersexual vape green juice banjo biodiesel hot chicken
-            schlitz cornhole flannel offal fixie truffaut everyday carry
-            post-ironic. Literally subway tile bespoke, letterpress kitsch
-            dreamcatcher echo park hell of polaroid selvage taxidermy meggings
-            master cleanse VHS. Pok pok craft beer wayfarers occupy subway tile
-            art party fashion axe activated charcoal williamsburg ugh celiac.
-            You probably haven't heard of them bushwick typewriter twee food
-            truck activated charcoal. Selvage freegan before they sold out
-            portland PBR&B mixtape cold-pressed tofu. Scenester roof party
-            direct trade yuccie four dollar toast. Raclette subway tile
-            sartorial hell of.
-          </p>
+      </section>
+      <section className='section'>
+        <p className='section-title'>
+          AI That Reads Articles So You Don't Have To
+        </p>
+        <br />
+        <div className='columns level'>
+          <div className='column img-div'>
+            <img
+              src='/summarize.png'
+              alt='Summarizing a large article into small bits.'
+            />
+          </div>
+          <div className='column'>
+            <p>
+              We use natural language processing and artificial intelligence to
+              summarize articles into digestable summaries. Now you can stay
+              informed without having to read through hundreds of sentences.
+            </p>
+          </div>
         </div>
-        <div className='column'>
-          <p className='column-title'>Some Title</p>
-          <p>
-            Distillery lumbersexual vape green juice banjo biodiesel hot chicken
-            schlitz cornhole flannel offal fixie truffaut everyday carry
-            post-ironic. Literally subway tile bespoke, letterpress kitsch
-            dreamcatcher echo park hell of polaroid selvage taxidermy meggings
-            master cleanse VHS. Pok pok craft beer wayfarers occupy subway tile
-            art party fashion axe activated charcoal williamsburg ugh celiac.
-            You probably haven't heard of them bushwick typewriter twee food
-            truck activated charcoal. Selvage freegan before they sold out
-            portland PBR&B mixtape cold-pressed tofu. Scenester roof party
-            direct trade yuccie four dollar toast. Raclette subway tile
-            sartorial hell of.
+      </section>
+      <section className='section'>
+          <p className='section-title'>
+            Get the Top Headlines Delivered to Your Inbox
           </p>
+        <div className='columns level'>
+          <div className='column'>
+            <p>
+              NewsMe compiles your customized newsfeed into a convenient morning
+              newsletter. The newsletter compiles the top headlines from the
+              previous day from your subscribed topics.
+            </p>
+          </div>
+          <div className='column img-div'>
+            <img src='/newsletter.png' alt='Newsletter Icon'></img>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 
