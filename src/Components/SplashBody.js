@@ -3,7 +3,7 @@ import React from 'react'
 function SplashBody() {
   return (
     <>
-      <section className='section'>
+      <section className='section splash-body'>
         <p className='section-title'>No Need to Visit 100 Different Websites</p>
         <br />
         <div className='columns level'>
@@ -21,7 +21,7 @@ function SplashBody() {
           </div>
         </div>
       </section>
-      <section className='section'>
+      <section className='section splash-body'>
         <p className='section-title'>
           AI That Reads Articles So You Don't Have To
         </p>
@@ -42,7 +42,7 @@ function SplashBody() {
           </div>
         </div>
       </section>
-      <section className='section'>
+      <section className='section splash-body'>
           <p className='section-title'>
             Get the Top Headlines Delivered to Your Inbox
           </p>
