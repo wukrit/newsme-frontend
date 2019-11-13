@@ -21,6 +21,7 @@ function SplashBody() {
           </div>
         </div>
       </section>
+      <hr />
       <section className='section splash-body'>
         <p className='section-title'>
           AI That Reads Articles So You Don't Have To
@@ -42,6 +43,7 @@ function SplashBody() {
           </div>
         </div>
       </section>
+      <hr />
       <section className='section splash-body'>
           <p className='section-title'>
             Get the Top Headlines Delivered to Your Inbox
