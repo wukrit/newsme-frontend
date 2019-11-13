@@ -68,17 +68,18 @@ function MobileNav({ userState, state, login, setLoginEmail, setLoginPassword, l
 
   const renderLoggedInUser = () => {
     return (
-      <>
+      <div className='loggeduser'>
         <h2 className='title'>Currently Logged in as:</h2>
-        <Link className='navbar-item' to='/edit'>
+        <Link to='/edit'>
           <span>
             <i className='fas fa-user fa-lg'></i> {userState.user !== undefined ? userState.user.email : null}
           </span>
         </Link>
+        <br />
         <button className='button is-danger' onClick={handleLogOut}>
           Log Out
         </button>
-      </>
+      </div>
     )
   }
 
