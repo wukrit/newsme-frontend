@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { MobileNav } from '../Components'
 
 function NavBar({ userState, dispatch }) {
   const handleLogOut = () => {
@@ -10,7 +11,6 @@ function NavBar({ userState, dispatch }) {
 
   return (
     <nav className='navbar is-link'>
-      <div className='navbar-menu'>
         <div className='navbar-brand'>
           <NavLink className='navbar-item' to='/feed'>
             <span className='title brand'>
@@ -18,7 +18,9 @@ function NavBar({ userState, dispatch }) {
               <i className='fas fa-newspaper'></i> NewsMe
             </span>
           </NavLink>
+          <MobileNav />
         </div>
+        <div className='navbar-menu'>
         <div className='navbar-end'>
           <NavLink className='navbar-item' to='/edit'>
             <span>
@@ -31,7 +33,7 @@ function NavBar({ userState, dispatch }) {
             </button>
           </div>
         </div>
-      </div>
+        </div>
     </nav>
   )
 }

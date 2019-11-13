@@ -52,9 +52,15 @@ const deleteUser = dispatch => token => {
   dispatch({ type: 'CLEAR_USER' })
 }
 
+const logout = () => dispatch => {
+  dispatch({ type: 'CLEAR_USER' })
+  dispatch({ type: 'CLEAR_SUBS' })
+}
+
 export default {
   login,
   persist,
   editUser,
-  deleteUser
+  deleteUser,
+  logout
 }
