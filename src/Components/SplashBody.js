@@ -9,7 +9,7 @@ function SplashBody() {
         <div className='columns level'>
           <div className='column has-text-centered'>
             <p>
-              NewsMe gathers the top headlines from hundreds ofglobal sources so
+              NewsMe gathers the top headlines from hundreds of <br />global sources so
               you don't have to.
             </p>
           </div>

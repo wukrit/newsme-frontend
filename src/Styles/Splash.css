@@ -58,3 +58,7 @@ img {
 .section {
   padding-bottom: 0;
 }
+
+.column p {
+  text-align: center;
+}
