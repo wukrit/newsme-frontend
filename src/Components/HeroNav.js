@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import UserActions from '../Redux/Actions/userActions'
 import SignupActions from '../Redux/Actions/signupActions'
 import { connect } from 'react-redux'
 import { MobileNav } from '../Components'
 
-function HeroNav({ state, login, setLoginEmail, setLoginPassword }) {
+function HeroNav({ user, state, login, setLoginEmail, setLoginPassword }) {
+  const loginRef = useRef(null)
+
   const handleEmailChange = event => {
     setLoginEmail(event.target.value)
   }
@@ -20,6 +22,15 @@ function HeroNav({ state, login, setLoginEmail, setLoginPassword }) {
       password: state.loginPassword
     }
     login(userObj)
+    if (user.errors) {
+      loginRef.current.setCustomValidity('Invalid username & password combination')
+      loginRef.current.reportValidity()
+      loginRef.current.setCustomValidity('')
+    } else if (userObj.password === "") {
+      loginRef.current.setCustomValidity('Please enter a password')
+      loginRef.current.reportValidity()
+      loginRef.current.setCustomValidity('')
+    }
     event.target.reset()
     return false
   }
@@ -43,6 +54,7 @@ function HeroNav({ state, login, setLoginEmail, setLoginPassword }) {
               onSubmit={event => handleSubmit(event)}
             >
               <input
+                ref={loginRef}
                 className='input is-small'
                 name='email'
                 type='email'

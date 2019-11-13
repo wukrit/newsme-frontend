@@ -7,6 +7,7 @@ import '../Styles/MobileNav.css'
 
 function MobileNav({ userState, state, login, setLoginEmail, setLoginPassword, logout }) {
   const menuRef = useRef(null)
+  const loginRef = useRef(null)
 
   const handleToggleMenu = () => {
     menuRef.current.classList.toggle('open')
@@ -27,6 +28,15 @@ function MobileNav({ userState, state, login, setLoginEmail, setLoginPassword, l
       password: state.loginPassword
     }
     login(userObj)
+    if (userState.errors) {
+      loginRef.current.setCustomValidity('Invalid username & password combination')
+      loginRef.current.reportValidity()
+      loginRef.current.setCustomValidity('')
+    } else if (userObj.password === "") {
+      loginRef.current.setCustomValidity('Please enter a password')
+      loginRef.current.reportValidity()
+      loginRef.current.setCustomValidity('')
+    }
     event.target.reset()
     return false
   }
@@ -42,6 +52,7 @@ function MobileNav({ userState, state, login, setLoginEmail, setLoginPassword, l
         onSubmit={event => handleSubmit(event)}
       >
         <input
+          ref={loginRef}
           className='input is-large'
           name='email'
           type='email'
