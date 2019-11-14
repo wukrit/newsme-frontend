@@ -11,9 +11,9 @@ function Article({ article }) {
           </h3>
         </a>
         <p>{article.body}</p>
-        <span className='level-left share-btns'>
-          <FacebookShareButton url={article.url} quote={article.headline}><i className="fab fa-facebook-f social-icon"></i></FacebookShareButton>
-          <TwitterShareButton url={article.url} title={article.headline}><i className="fab fa-twitter social-icon"></i></TwitterShareButton>
+        <span className='level-left share-btns is-link'>
+          <FacebookShareButton url={article.url} quote={article.headline} hashtag='NewsMe'><i className="fab fa-facebook-f social-icon"></i></FacebookShareButton>
+          <TwitterShareButton url={article.url} title={article.headline} hashtag='NewsMe'><i className="fab fa-twitter social-icon"></i></TwitterShareButton>
         </span>
       </div>
     </article>

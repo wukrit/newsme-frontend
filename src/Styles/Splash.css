@@ -70,9 +70,15 @@ hr {
 }
 
 .social-icon {
-  margin: 10px 1vw;
+  margin-top: 1.6vh;
+  margin-right: 1vw;
+  color: #3273dc;
 }
 
 .social-icon:hover {
   cursor: pointer;
+}
+
+.fa-twitter {
+  padding-top: 2px;
 }
