@@ -2,7 +2,12 @@ import React from 'react'
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share'
 
 function Article({ article }) {
-  console.log(article)
+  Array.prototype.unique = function() {
+    return this.filter(function (value, index, self) {
+      return self.indexOf(value) === index;
+    });
+  }
+
   return (
     <article className='media'>
       <div className='media-content'>
@@ -12,8 +17,8 @@ function Article({ article }) {
           </h3>
         </a>
         <ul className='content'>
-          {article.body.split("\n").map(sentence => {
-            return sentence !== "" ? <li className='content'>{sentence}</li> : null
+          {article.body.split("\n").unique().map(sentence => {
+            return sentence !== "" && sentence !== "CLOSE" && sentence.toUpperCase() !== sentence ? <li className='content'>{sentence}</li> : null
           })}
         </ul>
         <span className='level-left share-btns is-link'>
