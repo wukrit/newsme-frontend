@@ -10,6 +10,7 @@ function Article({ article }) {
           </h3>
         </a>
         <p>{article.body}</p>
+        <hr />
       </div>
     </article>
   )
