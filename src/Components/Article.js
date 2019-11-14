@@ -1,7 +1,8 @@
 import React from 'react'
-import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share'
 
 function Article({ article }) {
+  console.log(article)
   return (
     <article className='media'>
       <div className='media-content'>
@@ -10,10 +11,15 @@ function Article({ article }) {
             {article.headline}
           </h3>
         </a>
-        <p>{article.body}</p>
+        <ul className='content'>
+          {article.body.split("\n").map(sentence => {
+            return sentence !== "" ? <li className='content'>{sentence}</li> : null
+          })}
+        </ul>
         <span className='level-left share-btns is-link'>
           <FacebookShareButton url={article.url} quote={article.headline} hashtag='NewsMe'><i className="fab fa-facebook-f social-icon"></i></FacebookShareButton>
           <TwitterShareButton url={article.url} title={article.headline} hashtag='NewsMe'><i className="fab fa-twitter social-icon"></i></TwitterShareButton>
+          <LinkedinShareButton url={article.url}><i className="fab fa-linkedin-in social-icon"></i></LinkedinShareButton>
         </span>
       </div>
     </article>

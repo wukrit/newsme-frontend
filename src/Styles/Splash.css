@@ -82,3 +82,12 @@ hr {
 .fa-twitter {
   padding-top: 2px;
 }
+
+ul {
+  list-style: unset;
+  margin-left: 2vw;
+}
+
+.share-btns {
+  margin-left: 2vw;
+}
