@@ -95,3 +95,11 @@ ul {
 .topic-section {
   border-bottom: 1px solid #606279;
 }
+
+.edit-label {
+  font-weight: 700;
+}
+
+.del-btn {
+  margin-left: 5px;
+}
