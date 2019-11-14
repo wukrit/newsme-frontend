@@ -91,3 +91,7 @@ ul {
 .share-btns {
   margin-left: 2vw;
 }
+
+.topic-section {
+  border-bottom: 1px solid #606279;
+}

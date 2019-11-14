@@ -12,8 +12,8 @@ function Topic({ title, articles }) {
     }
   }
   return (
-    <div>
-      <h2 className='title'>{title}</h2>
+    <div >
+      <h2 className='title topic-section'>{title}</h2>
       {renderArticles()}
       <br />
     </div>
