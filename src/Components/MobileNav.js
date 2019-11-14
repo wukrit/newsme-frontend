@@ -5,7 +5,14 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import '../Styles/MobileNav.css'
 
-function MobileNav({ userState, state, login, setLoginEmail, setLoginPassword, logout }) {
+function MobileNav({
+  userState,
+  state,
+  login,
+  setLoginEmail,
+  setLoginPassword,
+  logout
+}) {
   const menuRef = useRef(null)
   const loginRef = useRef(null)
 
@@ -29,10 +36,12 @@ function MobileNav({ userState, state, login, setLoginEmail, setLoginPassword, l
     }
     login(userObj)
     if (userState.errors) {
-      loginRef.current.setCustomValidity('Invalid username & password combination')
+      loginRef.current.setCustomValidity(
+        'Invalid username & password combination'
+      )
       loginRef.current.reportValidity()
       loginRef.current.setCustomValidity('')
-    } else if (userObj.password === "") {
+    } else if (userObj.password === '') {
       loginRef.current.setCustomValidity('Please enter a password')
       loginRef.current.reportValidity()
       loginRef.current.setCustomValidity('')
@@ -83,10 +92,16 @@ function MobileNav({ userState, state, login, setLoginEmail, setLoginPassword, l
         <h2 className='title'>Currently Logged in as:</h2>
         <Link to='/edit'>
           <span>
-            <i className='fas fa-user fa-lg'></i> {userState.user !== undefined ? userState.user.email : null}
+            <i className='fas fa-user fa-lg'></i>{' '}
+            {userState.user !== undefined ? userState.user.email : null}
           </span>
         </Link>
         <br />
+        <Link className='navbar-item' to='/edit'>
+          <span>
+            <i className='fas fa-cog fa-lg'></i>
+          </span>
+        </Link>
         <button className='button is-danger' onClick={handleLogOut}>
           Log Out
         </button>
@@ -103,13 +118,18 @@ function MobileNav({ userState, state, login, setLoginEmail, setLoginPassword, l
         <li onClick={handleToggleMenu}>
           <i className='fas fa-times closebtn'></i>
         </li>
-        {userState.user === undefined ? renderLoginForm() : renderLoggedInUser()}
+        {userState.user === undefined
+          ? renderLoginForm()
+          : renderLoggedInUser()}
       </div>
     </>
   )
 }
 
-const mapStateToProps = state => ({ state: state.signup, userState: state.user })
+const mapStateToProps = state => ({
+  state: state.signup,
+  userState: state.user
+})
 
 const mapDispatchToProps = {
   logout: UserActions.logout,

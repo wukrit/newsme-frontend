@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import UserActions from '../Redux/Actions/userActions'
 import SignupActions from '../Redux/Actions/signupActions'
 import { connect } from 'react-redux'
@@ -6,6 +6,17 @@ import { MobileNav } from '../Components'
 
 function HeroNav({ user, state, login, setLoginEmail, setLoginPassword }) {
   const loginRef = useRef(null)
+
+  const triggerError = str => {
+    loginRef.current.setCustomValidity(str)
+    loginRef.current.reportValidity()
+    loginRef.current.setCustomValidity('')
+  }
+  useEffect(() => {
+    if (user.errors) {
+      triggerError('Invalid username & password combination')
+    }
+  }, [user])
 
   const handleEmailChange = event => {
     setLoginEmail(event.target.value)
@@ -23,13 +34,7 @@ function HeroNav({ user, state, login, setLoginEmail, setLoginPassword }) {
     }
     login(userObj)
     if (user.errors) {
-      loginRef.current.setCustomValidity('Invalid username & password combination')
-      loginRef.current.reportValidity()
-      loginRef.current.setCustomValidity('')
-    } else if (userObj.password === "") {
-      loginRef.current.setCustomValidity('Please enter a password')
-      loginRef.current.reportValidity()
-      loginRef.current.setCustomValidity('')
+      triggerError('Invalid username & password combination')
     }
     event.target.reset()
     return false

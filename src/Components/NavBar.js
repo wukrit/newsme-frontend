@@ -11,20 +11,25 @@ function NavBar({ userState, dispatch }) {
 
   return (
     <nav className='navbar is-link'>
-        <div className='navbar-brand'>
-          <NavLink className='navbar-item' to='/feed'>
-            <span className='title brand'>
-              {' '}
-              <i className='fas fa-newspaper'></i> NewsMe
-            </span>
-          </NavLink>
-          <MobileNav />
-        </div>
-        <div className='navbar-menu'>
+      <div className='navbar-brand'>
+        <NavLink className='navbar-item' to='/feed'>
+          <span className='title brand'>
+            {' '}
+            <i className='fas fa-newspaper'></i> NewsMe
+          </span>
+        </NavLink>
+        <MobileNav />
+      </div>
+      <div className='navbar-menu'>
         <div className='navbar-end'>
           <NavLink className='navbar-item' to='/edit'>
             <span>
-              <i className='fas fa-user fa-lg'></i> {userState.user.email}
+              <i className='fas fa-user fa-lg'></i> {userState.user.email}{' '}
+            </span>
+          </NavLink>
+          <NavLink className='navbar-item' to='/edit'>
+            <span>
+              <i className='fas fa-cog fa-lg'></i>
             </span>
           </NavLink>
           <div className='navbar-item'>
@@ -33,7 +38,7 @@ function NavBar({ userState, dispatch }) {
             </button>
           </div>
         </div>
-        </div>
+      </div>
     </nav>
   )
 }
