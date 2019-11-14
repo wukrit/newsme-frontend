@@ -68,3 +68,11 @@ hr {
   margin-right: auto;
   width: 80%;
 }
+
+.social-icon {
+  margin: 10px 1vw;
+}
+
+.social-icon:hover {
+  cursor: pointer;
+}

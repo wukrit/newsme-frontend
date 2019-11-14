@@ -1,4 +1,5 @@
 import React from 'react'
+import { FacebookShareButton, TwitterShareButton } from 'react-share'
 
 function Article({ article }) {
   return (
@@ -10,6 +11,10 @@ function Article({ article }) {
           </h3>
         </a>
         <p>{article.body}</p>
+        <span className='level-left share-btns'>
+          <FacebookShareButton url={article.url} quote={article.headline}><i className="fab fa-facebook-f social-icon"></i></FacebookShareButton>
+          <TwitterShareButton url={article.url} title={article.headline}><i className="fab fa-twitter social-icon"></i></TwitterShareButton>
+        </span>
       </div>
     </article>
   )
