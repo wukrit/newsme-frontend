@@ -23,8 +23,10 @@ Then we use [Aylien](https://aylien.com/) natural language processing to summari
 
 ## Installation
 
-```Clone the repo and CD inside the directory
+```
+Clone the repo and CD inside the directory
 npm install
-npm start```
+npm start
+```
 
 Make sure to visit the repo for the backend and follow those instructions as well.
