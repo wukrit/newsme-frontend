@@ -3,6 +3,13 @@
 ## What is NewsMe?
 NewsMe is an an AI enhanced news application. NewsMe allows users to subscribe to topics they are interested in and recieve a customized newsfeed. NewsMe also allows users to get their daily newsfeeds sent to them via html or text email.
 
+## Demo
+
+![Video of NewsMe homepage](https://imgur.com/DNum9wm.gif)
+
+![Video of NewsMe share button](https://imgur.com/3csal1d.gif)
+
+
 ## How does it work?
 
 ### Front-End
@@ -20,6 +27,7 @@ NewsMe gathers the top headlines from hundreds of
 global sources by using [NewsApi](https://newsapi.org/).
 
 Then we use [Aylien](https://aylien.com/) natural language processing to summarize articles into digestable summaries. Now you can stay informed without having to read through hundreds of sentences.
+
 
 ## Installation
 
